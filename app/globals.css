@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+@source "../app/**/*.{ts,tsx}";
+@source "../components/**/*.{ts,tsx}";
+
+/* ── Design tokens ── */
+@theme {
+  /* Custom breakpoints (override Tailwind defaults) */
+  --breakpoint-xs: 420px;
+  --breakpoint-md: 820px;
+  --breakpoint-lg: 1100px;
+  --breakpoint-xl: 1280px;
+
+  /* Brand colours */
+  --color-teal: #193435;
+  --color-teal-deep: #102728;
+  --color-warm: #f0f0e5;
+  --color-gold: #d6b36c;
+  --color-silver: #c0c0c0;
+  --color-charcoal: #2d2f2f;
+  --color-site-black: #0f0f0f;
+
+  /* Font stacks — references CSS vars injected by next/font */
+  --font-display: var(--font-archivo), "Arial Black", Impact, sans-serif;
+  --font-sans: var(--font-roboto), Arial, sans-serif;
+}
+
+/* ── Base resets ── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  img,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+/* ── Reusable components ── */
+@layer components {
+  /* Responsive centered container */
+  .site-container {
+    width: min(calc(100% - 48px), 1280px);
+    margin-inline: auto;
+  }
+
+  /* Archivo Black display headings */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 900;
+    line-height: 0.9;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* Small uppercase eyebrow labels */
+  .eyebrow {
+    margin: 0 0 28px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+  }
+
+  /* Base button — add colour/border utilities on top */
+  .btn {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: 0 24px;
+    font-size: 0.72rem;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: opacity 180ms ease;
+  }
+
+  .btn:hover {
+    opacity: 0.75;
+  }
+
+  /* Mobile menu — slides in from right */
+  .mobile-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100svh;
+    background: #193435;
+    color: #f0f0e5;
+    transform: translateX(100%);
+    transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      visibility 0s 0.38s;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .mobile-overlay.open {
+    transform: translateX(0);
+    transition: transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+      visibility 0s;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  /* Vertical gradient line in hero scroll cue */
+  .scroll-line {
+    display: block;
+    width: 1px;
+    height: 74px;
+    background: linear-gradient(180deg, transparent, #d6b36c, transparent);
+  }
+
+  /* Prevent body scroll when mobile menu is open */
+  .menu-open {
+    overflow: hidden;
+  }
+}
+
+/* ── Mobile overrides (outside layer so they win over component defaults) ── */
+@media (max-width: 819px) {
+  .site-container {
+    width: min(calc(100% - 32px), 1280px);
+  }
+
+  .btn {
+    padding-inline: 18px;
+    font-size: 0.66rem;
+  }
+}

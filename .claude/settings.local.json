@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install *)",
+      "Bash(node -e \"console.log\\(require\\('./node_modules/tailwindcss/package.json'\\).version\\)\")",
+      "Bash(node -e \"try { require\\('tailwindcss/postcss'\\); console.log\\('bundled'\\); } catch\\(e\\) { console.log\\('not bundled:', e.message.slice\\(0,80\\)\\); }\")",
+      "Bash(npx tsc *)",
+      "Bash(npx next *)"
+    ]
+  }
+}
