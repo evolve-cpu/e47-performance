@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { E47Logo } from "@/components/e47-logo";
 import { MobileMenu } from "@/components/mobile-menu";
+import { ScrollReveal } from "@/components/scroll-reveal";
 import { homeContent } from "@/data/home-content";
 import { createMetadata } from "@/lib/seo";
 
@@ -14,6 +15,7 @@ export const metadata = createMetadata({
 export default function HomePage() {
   return (
     <div className="min-h-screen bg-warm">
+      <ScrollReveal />
 
       {/* ── NAVBAR ── */}
       <header className="fixed left-0 right-0 top-0 z-50">
@@ -25,7 +27,7 @@ export default function HomePage() {
 
           <nav className="hidden items-center gap-[42px] text-[0.76rem] font-bold tracking-[0.22em] uppercase md:flex" aria-label="Primary navigation">
             {homeContent.navigation.map((item) => (
-              <a key={item.targetId} href={`#${item.targetId}`} className="transition-colors duration-[180ms] hover:text-gold">
+              <a key={item.href} href={item.href} className="transition-colors duration-[180ms] hover:text-gold">
                 {item.label}
               </a>
             ))}
@@ -33,7 +35,7 @@ export default function HomePage() {
 
           <a
             className="hidden min-h-[44px] items-center justify-center rounded-[2px] border border-gold px-6 text-[0.72rem] font-extrabold tracking-[0.18em] uppercase text-gold transition-opacity hover:opacity-70 md:inline-flex"
-            href={`#${homeContent.appointment.targetId}`}
+            href={homeContent.appointment.href}
           >
             {homeContent.appointment.label}
           </a>
@@ -75,10 +77,10 @@ export default function HomePage() {
               {homeContent.hero.text}
             </p>
             <div className="mt-7 flex flex-wrap gap-[18px] max-md:grid max-md:w-[min(100%,290px)] max-md:gap-[14px]">
-              <a className="btn bg-warm text-teal" href={`#${homeContent.appointment.targetId}`}>
+              <a className="btn bg-warm text-teal" href={homeContent.appointment.href}>
                 {homeContent.appointment.label}
               </a>
-              <a className="btn border border-gold text-gold" href={`#${homeContent.hero.secondaryAction.targetId}`}>
+              <a className="btn border border-gold text-gold" href={homeContent.hero.secondaryAction.href}>
                 {homeContent.hero.secondaryAction.label}
               </a>
             </div>
@@ -94,13 +96,13 @@ export default function HomePage() {
       {/* ── PHILOSOPHY ── */}
       <section className="bg-warm py-[clamp(88px,11vw,156px)] text-teal max-md:py-[66px]" id="philosophy">
         <div className="site-container grid grid-cols-[minmax(0,0.95fr)_minmax(320px,0.82fr)] items-center gap-[clamp(48px,8vw,130px)] max-md:grid-cols-1 max-md:gap-7">
-          <div>
+          <div className="reveal">
             <p className="eyebrow text-teal">{homeContent.philosophy.eyebrow}</p>
             <h2 className="display text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem]">
               {homeContent.philosophy.title}
             </h2>
           </div>
-          <p className="m-0 max-w-[660px] text-[1.18rem] text-charcoal max-md:text-base">
+          <p className="reveal m-0 max-w-[660px] text-[1.18rem] text-charcoal max-md:text-base">
             {homeContent.philosophy.text}
           </p>
         </div>
@@ -109,13 +111,13 @@ export default function HomePage() {
       {/* ── EXPERTISE ── */}
       <section className="bg-teal py-[clamp(88px,11vw,156px)] text-warm max-md:py-[66px]" id="expertise">
         <div className="site-container">
-          <p className="eyebrow text-gold">{homeContent.expertise.eyebrow}</p>
-          <h2 className="display max-w-[960px] text-warm text-[clamp(3.4rem,7.8vw,6.8rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem]">
+          <p className="eyebrow text-gold reveal">{homeContent.expertise.eyebrow}</p>
+          <h2 className="display max-w-[960px] text-warm text-[clamp(3.4rem,7.8vw,6.8rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem] reveal">
             {homeContent.expertise.title}
           </h2>
           <div className="mt-14 grid grid-cols-4 gap-9 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-[46px]">
             {homeContent.expertise.items.map((item) => (
-              <article key={item.title}>
+              <article key={item.title} className="reveal">
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-teal-deep max-md:aspect-[1.42/1]">
                   <Image
                     src={item.image} alt={item.alt} fill
@@ -135,31 +137,31 @@ export default function HomePage() {
       {/* ── WHAT SETS US APART ── */}
       <section className="bg-warm py-[clamp(88px,11vw,156px)] text-teal max-md:py-[66px]">
         <div className="site-container">
-          <p className="eyebrow text-teal">{homeContent.difference.eyebrow}</p>
-          <h2 className="display max-w-[980px] text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem]">
+          <p className="eyebrow text-teal reveal">{homeContent.difference.eyebrow}</p>
+          <h2 className="display max-w-[980px] text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem] reveal">
             {homeContent.difference.title}
           </h2>
           <div className="mt-[clamp(80px,12vw,180px)] grid grid-cols-3 gap-x-[90px] gap-y-[80px] max-md:mt-11 max-md:grid-cols-1 max-md:gap-[30px]">
             {homeContent.difference.items.map((item) => (
-              <article key={item.title}>
+              <article key={item.title} className="reveal">
                 <h3 className="mb-[10px] mt-0 font-display text-[1.42rem] font-extrabold leading-none uppercase text-teal max-md:mb-[6px] max-md:text-base">{item.title}</h3>
                 <p className="m-0 text-[1.12rem] text-charcoal max-md:text-[0.98rem]">{item.text}</p>
               </article>
             ))}
-          </div>
+          </div
         </div>
       </section>
 
       {/* ── TESTIMONIALS ── */}
       <section className="bg-teal py-[clamp(90px,10vw,140px)] text-warm max-md:py-[66px]">
         <div className="site-container">
-          <p className="eyebrow text-gold">{homeContent.testimonials.eyebrow}</p>
-          <h2 className="display text-warm text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem]">
+          <p className="eyebrow text-gold reveal">{homeContent.testimonials.eyebrow}</p>
+          <h2 className="display text-warm text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem] reveal">
             {homeContent.testimonials.title}
           </h2>
           <div className="mt-[70px] grid grid-cols-3 gap-[80px] max-md:mt-9 max-md:grid-cols-1 max-md:gap-11">
             {homeContent.testimonials.items.map((item) => (
-              <figure key={item.author} className="m-0">
+              <figure key={item.author} className="m-0 reveal">
                 <blockquote className="m-0 min-h-[118px] text-[1.24rem] font-bold italic leading-[1.35] text-warm max-md:min-h-0 max-md:text-[1.1rem]">
                   &quot;{item.quote}&quot;
                 </blockquote>
@@ -175,7 +177,7 @@ export default function HomePage() {
       {/* ── BLOGS ── */}
       <section className="bg-warm py-[clamp(88px,11vw,156px)] text-teal max-md:py-[66px]" id="blogs">
         <div className="site-container">
-          <div className="flex items-end justify-between gap-10 max-md:block">
+          <div className="flex items-end justify-between gap-10 max-md:block reveal">
             <div>
               <p className="eyebrow text-teal">{homeContent.blogs.eyebrow}</p>
               <h2 className="display text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)]">
@@ -189,7 +191,7 @@ export default function HomePage() {
 
           <div className="mt-[76px] grid grid-cols-3 gap-[54px] max-md:mt-[38px] max-md:grid-cols-1 max-md:gap-11">
             {homeContent.blogs.items.map((item) => (
-              <a className="block" href={item.href} key={item.title} target="_blank" rel="noreferrer">
+              <a className="block reveal" href={item.href} key={item.title}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-warm max-md:aspect-[1.42/1]">
                   <Image src={item.image} alt={item.alt} fill sizes="(max-width: 820px) 100vw, 33vw" className="object-cover" />
                 </div>
@@ -217,13 +219,13 @@ export default function HomePage() {
         />
         <div className="absolute inset-0 bg-[rgb(16_39_40/88%)]" />
         <div className="relative z-[2] mx-auto w-[min(calc(100%-48px),1000px)] py-[clamp(96px,14vw,180px)] text-center max-md:w-[min(calc(100%-32px),520px)] max-md:py-[120px]">
-          <h2 className="display text-[clamp(3.2rem,7vw,6.7rem)] max-md:text-[clamp(2.7rem,12vw,4rem)] max-xs:text-[2.45rem]">
+          <h2 className="display text-[clamp(3.2rem,7vw,6.7rem)] max-md:text-[clamp(2.7rem,12vw,4rem)] max-xs:text-[2.45rem] reveal">
             {homeContent.cta.title}
           </h2>
           <p className="mx-auto mt-7 text-[1.25rem] text-[rgb(240_240_229/72%)] max-md:text-base">
             {homeContent.cta.text}
           </p>
-          <a className="btn bg-warm text-teal" href={`mailto:${homeContent.contact.email}`}>
+          <a className="btn mt-10 bg-warm text-teal" href={homeContent.appointment.href}>
             {homeContent.appointment.label}
           </a>
         </div>
@@ -248,7 +250,7 @@ export default function HomePage() {
           <div>
             <h2 className="mb-5 mt-0 text-[0.72rem] tracking-[0.2em] uppercase text-gold">Navigation</h2>
             {homeContent.navigation.map((item) => (
-              <a key={item.targetId} href={`#${item.targetId}`} className="mb-3 block text-[0.92rem] text-silver transition-colors duration-[180ms] hover:text-gold">
+              <a key={item.href} href={item.href} className="mb-3 block text-[0.92rem] text-silver transition-colors duration-[180ms] hover:text-gold">
                 {item.label}
               </a>
             ))}

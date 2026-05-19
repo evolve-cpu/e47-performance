@@ -5,8 +5,8 @@ import { E47Logo } from "@/components/e47-logo";
 
 type MobileMenuProps = {
   brandName: string;
-  navigation: Array<{ label: string; targetId: string }>;
-  appointment: { label: string; targetId: string };
+  navigation: Array<{ label: string; href: string }>;
+  appointment: { label: string; href: string };
 };
 
 export function MobileMenu({ brandName, navigation, appointment }: MobileMenuProps) {
@@ -31,7 +31,7 @@ export function MobileMenu({ brandName, navigation, appointment }: MobileMenuPro
 
       <div className={`mobile-overlay${open ? " open" : ""}`} aria-hidden={!open}>
         <div className="flex min-h-[82px] items-center justify-between border-b border-[rgb(214_179_108/22%)] px-[30px]">
-          <a href="#top" className="inline-flex text-warm" aria-label={`${brandName} home`} onClick={closeMenu}>
+          <a href="/" className="inline-flex text-warm" aria-label={`${brandName} home`} onClick={closeMenu}>
             <E47Logo width={78} height={48} />
           </a>
           <button
@@ -49,8 +49,8 @@ export function MobileMenu({ brandName, navigation, appointment }: MobileMenuPro
         >
           {navigation.map((item) => (
             <a
-              key={item.targetId}
-              href={`#${item.targetId}`}
+              key={item.href}
+              href={item.href}
               onClick={closeMenu}
               className="text-[clamp(3.15rem,14vw,4.75rem)] font-light leading-none tracking-[0.04em] uppercase text-warm"
             >
@@ -61,7 +61,7 @@ export function MobileMenu({ brandName, navigation, appointment }: MobileMenuPro
 
         <a
           className="mx-[30px] mb-24 mt-auto flex min-h-[58px] items-center justify-center border border-gold text-[0.78rem] font-extrabold tracking-[0.18em] uppercase text-gold"
-          href={`#${appointment.targetId}`}
+          href={appointment.href}
           onClick={closeMenu}
         >
           {appointment.label}

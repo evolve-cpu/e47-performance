@@ -1,17 +1,20 @@
 export const siteConfig = {
   name: "E47 Performance",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://example.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://e47performance.com",
   description:
-    "Performance-focused services built for measurable growth, fast delivery, and strong search visibility.",
+    "Movement-first physiotherapy, performance training, and recovery in Ahmedabad, Gujarat.",
   locale: "en_US",
-  contactEmail: "hello@example.com",
+  contactEmail: "contact@e47performance.com",
   nav: [
-    { label: "Services", href: "/services" },
-    { label: "Process", href: "/process" },
-    { label: "Contact", href: "/contact" }
+    { label: "Expertise", href: "#expertise" },
+    { label: "Blogs", href: "/blog" },
+    { label: "About", href: "/about" },
+    { label: "Contact Us", href: "/contact" }
   ],
   social: {
-    linkedin: "https://www.linkedin.com/"
+    instagram: "https://www.instagram.com/",
+    medium: "https://medium.com/",
+    youtube: "https://www.youtube.com/"
   }
 } as const;
 

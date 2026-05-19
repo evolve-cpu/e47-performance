@@ -11,11 +11,11 @@ export const homeContent: {
   };
   navigation: Array<{
     label: string;
-    targetId: string;
+    href: string;
   }>;
   appointment: {
     label: string;
-    targetId: string;
+    href: string;
   };
   hero: {
     mediaType: "image" | "video";
@@ -25,7 +25,7 @@ export const homeContent: {
     text: string;
     secondaryAction: {
       label: string;
-      targetId: string;
+      href: string;
     };
   };
   philosophy: {
