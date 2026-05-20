@@ -32,6 +32,10 @@ export function createMetadata({
     metadataBase: new URL(siteConfig.url),
     title: pageTitle,
     description,
+    icons: {
+      icon: "/icon.svg",
+      shortcut: "/icon.svg"
+    },
     ...(keywords && { keywords }),
     alternates: {
       canonical

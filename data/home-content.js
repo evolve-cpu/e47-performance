@@ -119,7 +119,8 @@ export const homeContent = {
         author: "Cricketer, Ahmedabad"
       },
       {
-        quote: "Three physios before this. They treated the pain. E47 found the cause.",
+        quote:
+          "Three physios before this. They treated the pain. E47 found the cause.",
         author: "MSK Patient, Rajkot"
       },
       {
