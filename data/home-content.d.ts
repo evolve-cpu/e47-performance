@@ -47,17 +47,21 @@ export const homeContent: {
   difference: {
     eyebrow: string;
     title: string;
+    bgImage?: string;
     items: Array<{
       title: string;
       text: string;
     }>;
   };
   testimonials: {
-    eyebrow: string;
-    title: string;
+    eyebrow?: string;
+    title: string[];
+    subtitle?: string;
     items: Array<{
       quote: string;
       author: string;
+      role: string;
+      image: string;
     }>;
   };
   blogs: {

@@ -1,0 +1,171 @@
+"use client";
+
+import { useRef, useState } from "react";
+import Image from "next/image";
+
+interface TestimonialItem {
+  quote: string;
+  author: string;
+  role: string;
+  image: string;
+}
+
+interface Props {
+  eyebrow?: string;
+  title: string[];
+  subtitle?: string;
+  items: TestimonialItem[];
+}
+
+const CARD_W = 376;
+const CARD_H = 540;
+const GAP = 36;
+const STEP = CARD_W + GAP;
+
+export function TestimonialsCarousel({ eyebrow, title, subtitle, items }: Props) {
+  const [active, setActive] = useState(1);
+  const count = items.length;
+  const touchX = useRef<number | null>(null);
+
+  const prev = () => setActive(i => (i - 1 + count) % count);
+  const next = () => setActive(i => (i + 1) % count);
+
+  function handleTouchStart(e: React.TouchEvent) {
+    touchX.current = e.touches[0].clientX;
+  }
+
+  function handleTouchEnd(e: React.TouchEvent) {
+    if (touchX.current === null) return;
+    const delta = touchX.current - e.changedTouches[0].clientX;
+    if (Math.abs(delta) > 44) delta > 0 ? next() : prev();
+    touchX.current = null;
+  }
+
+  function dist(i: number) {
+    const d = Math.abs(i - active);
+    return Math.min(d, count - d);
+  }
+
+  return (
+    <section className="overflow-hidden bg-warm pb-[clamp(88px,10vw,132px)] pt-[clamp(96px,11vw,152px)] text-teal">
+      <div className="site-container">
+        {eyebrow && <p className="eyebrow text-teal reveal">{eyebrow}</p>}
+        <h2 className="display max-w-[560px] text-[clamp(2.25rem,3.7vw,4rem)] text-teal reveal max-md:text-[clamp(2.1rem,9vw,3rem)]">
+          {title.map(line => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
+        </h2>
+        {subtitle && (
+          <p className="mt-3 text-[1rem] font-bold leading-tight text-charcoal reveal">
+            {subtitle}
+          </p>
+        )}
+      </div>
+
+      <div
+        className="mt-[68px] select-none max-md:mt-10"
+        onTouchStart={handleTouchStart}
+        onTouchEnd={handleTouchEnd}
+      >
+        <div
+          className="flex items-end transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] max-md:gap-[36px]"
+          style={{
+            gap: `${GAP}px`,
+            transform: `translateX(calc(50vw - ${active * STEP + CARD_W / 2}px))`,
+            willChange: "transform"
+          }}
+        >
+          {items.map((item, i) => {
+            const isActive = i === active;
+            const d = dist(i);
+            const opacity = d === 0 ? 1 : d === 1 ? 0.58 : 0.24;
+            const scale = isActive ? 1 : d === 1 ? 0.82 : 0.68;
+
+            return (
+              <button
+                key={item.author + item.role}
+                className="relative flex-shrink-0 cursor-pointer overflow-hidden rounded-[1px] bg-[#d7d7ca] text-left"
+                style={{
+                  width: `min(${CARD_W}px, 86vw)`,
+                  height: `min(${CARD_H}px, 152vw)`,
+                  opacity,
+                  transform: `scale(${scale})`,
+                  transformOrigin: "bottom center",
+                  transition:
+                    "opacity 0.5s ease, transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)"
+                }}
+                onClick={() => setActive(i)}
+                aria-label={`View ${item.author} testimonial: ${item.quote}`}
+              >
+                <Image
+                  src={item.image}
+                  alt={item.author}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 820px) 74vw, 344px"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#193435]/88 via-[#193435]/16 to-[#f0f0e5]/18" />
+
+                <span className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-warm/70 backdrop-blur-[2px]">
+                  <span className="ml-1 block h-0 w-0 border-y-[9px] border-l-[14px] border-y-transparent border-l-teal" />
+                </span>
+
+                {isActive && (
+                  <span
+                    className="pointer-events-none absolute inset-0"
+                    style={{ boxShadow: "inset 0 0 0 1px rgba(25,52,53,0.18)" }}
+                  />
+                )}
+
+                <span className="absolute bottom-6 left-6 right-6">
+                  <span className="block font-display text-[1rem] font-black uppercase leading-none text-warm">
+                    {item.author}
+                  </span>
+                  <span className="mt-[7px] block text-[0.58rem] font-black uppercase tracking-[0.08em] text-warm">
+                    {item.role}
+                  </span>
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      <div className="site-container mt-[42px] flex items-center justify-center gap-[8px] max-md:justify-between">
+        <button
+          type="button"
+          onClick={prev}
+          aria-label="Previous testimonial"
+          className="hidden h-11 w-11 items-center justify-center text-teal max-md:flex"
+        >
+          <span className="block h-4 w-4 rotate-45 border-b-2 border-l-2 border-teal" />
+        </button>
+
+        <div className="flex items-center justify-center gap-[8px]">
+          {items.map((item, i) => (
+            <button
+              key={item.author + i}
+              onClick={() => setActive(i)}
+              aria-label={`View testimonial ${i + 1}`}
+              className="h-2 w-2 transition-colors duration-300"
+              style={{
+                background: i === active ? "rgb(25 52 53)" : "rgb(25 52 53 / 20%)"
+              }}
+            />
+          ))}
+        </div>
+
+        <button
+          type="button"
+          onClick={next}
+          aria-label="Next testimonial"
+          className="hidden h-11 w-11 items-center justify-center text-teal max-md:flex"
+        >
+          <span className="block h-4 w-4 -rotate-45 border-b-2 border-r-2 border-teal" />
+        </button>
+      </div>
+    </section>
+  );
+}

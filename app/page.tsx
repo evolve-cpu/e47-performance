@@ -2,6 +2,7 @@ import Image from "next/image";
 import { E47Logo } from "@/components/e47-logo";
 import { MobileMenu } from "@/components/mobile-menu";
 import { ScrollReveal } from "@/components/scroll-reveal";
+import { TestimonialsCarousel } from "@/components/testimonials-carousel";
 import { homeContent } from "@/data/home-content";
 import { createMetadata } from "@/lib/seo";
 
@@ -14,26 +15,25 @@ export const metadata = createMetadata({
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-warm">
+    <div className="min-h-screen bg-site-black">
       <ScrollReveal />
 
-      {/* ── NAVBAR ── */}
       <header className="fixed left-0 right-0 top-0 z-50">
-        <div className="absolute inset-0 border-b border-[rgb(214_179_108/18%)] bg-[rgb(25_52_53/72%)] backdrop-blur-[12px]" />
-        <div className="site-container relative flex min-h-[80px] items-center justify-between text-warm max-md:min-h-[68px]">
+        <div className="absolute inset-0 bg-[rgb(13_28_29/48%)] backdrop-blur-[10px]" />
+        <div className="site-container relative flex min-h-[62px] items-center justify-between text-warm">
           <a
             className="inline-flex text-warm"
             href="#top"
             aria-label={`${homeContent.brand.name} home`}
           >
-            <E47Logo width={58} height={36} />
+            <E47Logo width={44} height={28} />
           </a>
 
           <nav
-            className="hidden items-center gap-[42px] text-[0.76rem] font-bold tracking-[0.22em] uppercase md:flex"
+            className="hidden items-center gap-[34px] text-[0.58rem] font-black uppercase tracking-[0.18em] md:flex"
             aria-label="Primary navigation"
           >
-            {homeContent.navigation.map(item =>
+            {homeContent.navigation.map(item => (
               <a
                 key={item.href}
                 href={item.href}
@@ -41,11 +41,11 @@ export default function HomePage() {
               >
                 {item.label}
               </a>
-            )}
+            ))}
           </nav>
 
           <a
-            className="hidden min-h-[44px] items-center justify-center rounded-[2px] border border-gold px-6 text-[0.72rem] font-extrabold tracking-[0.18em] uppercase text-gold transition-opacity hover:opacity-70 md:inline-flex"
+            className="hidden min-h-[30px] items-center justify-center border border-gold px-4 text-[0.56rem] font-black uppercase tracking-[0.14em] text-gold transition-opacity hover:opacity-70 md:inline-flex"
             href={homeContent.appointment.href}
           >
             {homeContent.appointment.label}
@@ -59,205 +59,156 @@ export default function HomePage() {
         </div>
       </header>
 
-      {/* ── HERO ── */}
       <section
-        className="relative min-h-[112vh] overflow-hidden bg-teal max-md:min-h-[100svh]"
+        className="relative min-h-[720px] overflow-hidden bg-teal max-md:min-h-[100svh]"
         id="top"
       >
-        {homeContent.hero.mediaType === "video" && homeContent.hero.video
-          ? <video
-              className="absolute inset-0 h-full w-full object-cover [filter:grayscale(15%)_contrast(1.04)]"
-              src={homeContent.hero.video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster={homeContent.hero.image}
-            />
-          : <Image
-              className="object-cover [filter:grayscale(15%)_contrast(1.04)]"
-              src={homeContent.hero.image}
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-            />}
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(25_52_53/50%)_0%,rgb(25_52_53/58%)_52%,rgb(15_15_15/92%)_100%),rgb(25_52_53/30%)]" />
+        {homeContent.hero.mediaType === "video" && homeContent.hero.video ? (
+          <video
+            className="absolute inset-0 h-full w-full object-cover [filter:grayscale(25%)_contrast(1.05)]"
+            src={homeContent.hero.video}
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster={homeContent.hero.image}
+          />
+        ) : (
+          <Image
+            className="object-cover [filter:grayscale(25%)_contrast(1.05)]"
+            src={homeContent.hero.image}
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+          />
+        )}
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(16_39_40/68%)_0%,rgb(16_39_40/58%)_44%,rgb(15_15_15/96%)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-[34%] bg-gradient-to-b from-transparent to-site-black" />
 
-        <div className="site-container relative z-[2] flex min-h-[112vh] items-center justify-between pt-[80px] text-warm max-md:min-h-[100svh] max-md:items-end max-md:pb-[120px] max-md:pt-[108px]">
+        <div className="site-container relative z-[2] flex min-h-[720px] items-center pt-[62px] text-warm max-md:min-h-[100svh] max-md:items-end max-md:pb-[90px]">
           <div>
-            <h1 className="display max-w-[620px] text-[clamp(4.8rem,8.4vw,7.8rem)] max-lg:text-[clamp(4.5rem,10vw,7rem)] max-md:max-w-[340px] max-md:text-[clamp(3rem,14vw,4.7rem)] max-xs:text-[2.95rem]">
-              {homeContent.hero.title.map(line =>
+            <h1 className="display max-w-[520px] text-[clamp(4.2rem,7vw,6.4rem)] max-md:max-w-[330px] max-md:text-[clamp(3.05rem,14vw,4.65rem)]">
+              {homeContent.hero.title.map(line => (
                 <span key={line} className="block">
                   {line}
                 </span>
-              )}
+              ))}
             </h1>
-            <p className="mt-7 max-w-[560px] text-[1.18rem] text-[rgb(240_240_229/78%)] max-md:mt-[18px] max-md:max-w-[320px] max-md:text-base">
+            <p className="mt-5 max-w-[520px] text-[1rem] font-bold leading-snug text-[rgb(240_240_229/82%)] max-md:max-w-[320px]">
               {homeContent.hero.text}
             </p>
-            <div className="mt-7 flex flex-wrap gap-[18px] max-md:grid max-md:w-[min(100%,290px)] max-md:gap-[14px]">
-              <a
-                className="btn bg-warm text-teal"
-                href={homeContent.appointment.href}
-              >
+            <div className="mt-6 flex flex-wrap gap-3 max-md:grid max-md:w-[min(100%,290px)]">
+              <a className="btn bg-warm text-teal" href={homeContent.appointment.href}>
                 {homeContent.appointment.label}
               </a>
-              <a
-                className="btn border border-gold text-gold"
-                href={homeContent.hero.secondaryAction.href}
-              >
+              <a className="btn border border-gold text-gold" href={homeContent.hero.secondaryAction.href}>
                 {homeContent.hero.secondaryAction.label}
               </a>
             </div>
           </div>
-
-          <div
-            className="mb-10 hidden grid-cols-1 justify-items-center gap-[18px] self-end text-gold md:grid"
-            aria-hidden="true"
-          >
-            <span className="[writing-mode:vertical-rl] text-[0.65rem] font-extrabold tracking-[0.32em] uppercase">
-              Scroll
-            </span>
-            <i className="scroll-line" />
-          </div>
         </div>
       </section>
 
-      {/* ── PHILOSOPHY ── */}
-      <section
-        className="bg-warm py-[clamp(88px,11vw,156px)] text-teal max-md:py-[66px]"
-        id="philosophy"
-      >
-        <div className="site-container grid grid-cols-[minmax(0,0.95fr)_minmax(320px,0.82fr)] items-center gap-[clamp(48px,8vw,130px)] max-md:grid-cols-1 max-md:gap-7">
+      <section className="relative -mt-px bg-site-black py-[clamp(86px,9vw,128px)] text-warm" id="philosophy">
+        <div className="site-container grid grid-cols-[minmax(0,0.95fr)_minmax(320px,0.82fr)] items-start gap-[clamp(48px,8vw,130px)] max-md:grid-cols-1 max-md:gap-7">
           <div className="reveal">
-            <p className="eyebrow text-teal">
-              {homeContent.philosophy.eyebrow}
-            </p>
-            <h2 className="display text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem]">
+            <h2 className="display max-w-[520px] text-[clamp(2.25rem,4vw,4.2rem)] text-warm">
               {homeContent.philosophy.title}
             </h2>
           </div>
-          <p className="reveal m-0 max-w-[660px] text-[1.18rem] text-charcoal max-md:text-base">
+          <p className="reveal m-0 max-w-[600px] text-[1rem] leading-relaxed text-[rgb(240_240_229/72%)]">
             {homeContent.philosophy.text}
           </p>
         </div>
       </section>
 
-      {/* ── EXPERTISE ── */}
-      <section
-        className="bg-teal py-[clamp(88px,11vw,156px)] text-warm max-md:py-[66px]"
-        id="expertise"
-      >
+      <section className="bg-teal py-[clamp(78px,9vw,128px)] text-warm" id="expertise">
         <div className="site-container">
-          <p className="eyebrow text-gold reveal">
-            {homeContent.expertise.eyebrow}
-          </p>
-          <h2 className="display max-w-[960px] text-warm text-[clamp(3.4rem,7.8vw,6.8rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem] reveal">
+          <h2 className="display max-w-[620px] text-[clamp(2.25rem,4vw,4.2rem)] text-warm reveal">
             {homeContent.expertise.title}
           </h2>
-          <div className="mt-14 grid grid-cols-4 gap-9 max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-[46px]">
-            {homeContent.expertise.items.map(item =>
+
+          <div className="mt-14 grid grid-cols-3 gap-9 max-md:grid-cols-1 max-md:gap-[46px]">
+            {homeContent.expertise.items.map(item => (
               <article key={item.title} className="reveal">
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-teal-deep max-md:aspect-[1.42/1]">
+                <div className="relative aspect-[0.8/1] w-full overflow-hidden bg-teal-deep">
                   <Image
                     src={item.image}
                     alt={item.alt}
                     fill
-                    sizes="(max-width: 820px) 100vw, 25vw"
-                    className="object-cover [filter:grayscale(8%)_contrast(1.02)]"
+                    sizes="(max-width: 820px) 100vw, 33vw"
+                    className="object-cover [filter:contrast(1.03)]"
                   />
                 </div>
-                <h3 className="mb-[10px] mt-[22px] font-display text-[1.42rem] font-extrabold leading-none uppercase">
+                <h3 className="mb-[9px] mt-[22px] font-display text-[1.05rem] font-black uppercase leading-none">
                   {item.title}
                 </h3>
-                <p className="m-0 font-light text-[rgb(240_240_229/68%)]">
-                  {item.text}
-                </p>
-                <span className="mt-6 block text-[0.72rem] font-extrabold tracking-[0.16em] uppercase text-gold">
+                <span className="block text-[0.58rem] font-black uppercase tracking-[0.12em] text-gold">
                   {item.tags}
                 </span>
               </article>
-            )}
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── WHAT SETS US APART ── */}
-      <section className="bg-warm py-[clamp(88px,11vw,156px)] text-teal max-md:py-[66px]">
-        <div className="site-container">
-          <p className="eyebrow text-teal reveal">
-            {homeContent.difference.eyebrow}
-          </p>
-          <h2 className="display max-w-[980px] text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem] reveal">
+      <section className="relative overflow-hidden bg-site-black py-[clamp(92px,11vw,154px)] text-warm">
+        {homeContent.difference.bgImage && (
+          <Image
+            className="object-cover opacity-45 [filter:grayscale(45%)_contrast(1.08)]"
+            src={homeContent.difference.bgImage}
+            alt=""
+            fill
+            sizes="100vw"
+          />
+        )}
+        <div className="absolute inset-0 bg-[rgb(12_31_32/76%)]" />
+        <div className="absolute inset-y-0 left-0 right-0 bg-[linear-gradient(180deg,#193435_0%,rgb(15_15_15/18%)_22%,rgb(15_15_15/38%)_70%,#0f0f0f_100%)]" />
+
+        <div className="site-container relative z-[2]">
+          <h2 className="display max-w-[900px] text-center text-[clamp(2.25rem,4vw,4.4rem)] text-warm reveal md:mx-auto">
             {homeContent.difference.title}
           </h2>
-          <div className="mt-[clamp(80px,12vw,180px)] grid grid-cols-3 gap-x-[90px] gap-y-[80px] max-md:mt-11 max-md:grid-cols-1 max-md:gap-[30px]">
-            {homeContent.difference.items.map(item =>
+          <div className="mt-[clamp(74px,10vw,136px)] grid grid-cols-3 gap-x-[70px] gap-y-[52px] max-md:mt-11 max-md:grid-cols-1 max-md:gap-[30px]">
+            {homeContent.difference.items.map(item => (
               <article key={item.title} className="reveal">
-                <h3 className="mb-[10px] mt-0 font-display text-[1.42rem] font-extrabold leading-none uppercase text-teal max-md:mb-[6px] max-md:text-base">
+                <h3 className="mb-[8px] mt-0 font-display text-[1rem] font-black uppercase leading-none text-warm">
                   {item.title}
                 </h3>
-                <p className="m-0 text-[1.12rem] text-charcoal max-md:text-[0.98rem]">
+                <p className="m-0 text-[0.88rem] leading-snug text-[rgb(240_240_229/72%)]">
                   {item.text}
                 </p>
               </article>
-            )}
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── TESTIMONIALS ── */}
-      <section className="bg-teal py-[clamp(90px,10vw,140px)] text-warm max-md:py-[66px]">
-        <div className="site-container">
-          <p className="eyebrow text-gold reveal">
-            {homeContent.testimonials.eyebrow}
-          </p>
-          <h2 className="display text-warm text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] max-xs:text-[2.45rem] reveal">
-            {homeContent.testimonials.title}
-          </h2>
-          <div className="mt-[70px] grid grid-cols-3 gap-[80px] max-md:mt-9 max-md:grid-cols-1 max-md:gap-11">
-            {homeContent.testimonials.items.map(item =>
-              <figure key={item.author} className="m-0 reveal">
-                <blockquote className="m-0 min-h-[118px] text-[1.24rem] font-bold italic leading-[1.35] text-warm max-md:min-h-0 max-md:text-[1.1rem]">
-                  &quot;{item.quote}&quot;
-                </blockquote>
-                <figcaption className="mt-7 border-t border-[rgb(214_179_108/72%)] pt-[18px] text-[0.75rem] font-extrabold tracking-[0.18em] uppercase text-warm">
-                  {item.author}
-                </figcaption>
-              </figure>
-            )}
-          </div>
-        </div>
-      </section>
+      <div className="-mt-px bg-warm">
+        <TestimonialsCarousel
+          eyebrow={homeContent.testimonials.eyebrow}
+          title={homeContent.testimonials.title}
+          subtitle={homeContent.testimonials.subtitle}
+          items={homeContent.testimonials.items}
+        />
+      </div>
 
-      {/* ── BLOGS ── */}
-      <section
-        className="bg-warm py-[clamp(88px,11vw,156px)] text-teal max-md:py-[66px]"
-        id="blogs"
-      >
+      <section className="bg-warm pb-[clamp(88px,10vw,132px)] pt-[clamp(44px,6vw,84px)] text-teal" id="blogs">
         <div className="site-container">
-          <div className="flex items-end justify-between gap-10 max-md:block reveal">
-            <div>
-              <p className="eyebrow text-teal">
-                {homeContent.blogs.eyebrow}
-              </p>
-              <h2 className="display text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)]">
-                {homeContent.blogs.title}
-              </h2>
-            </div>
-            <a
-              className="btn hidden border-teal text-teal md:inline-flex"
-              href={homeContent.blogs.action.href}
-            >
-              {homeContent.blogs.action.label} →
+          <div className="flex items-start justify-between gap-10 max-md:block reveal">
+            <h2 className="display max-w-[560px] text-[clamp(2.25rem,3.7vw,4rem)] text-teal">
+              {homeContent.blogs.title}
+            </h2>
+            <a className="btn hidden border-teal text-teal md:inline-flex" href={homeContent.blogs.action.href}>
+              {homeContent.blogs.action.label} -&gt;
             </a>
           </div>
 
-          <div className="mt-[76px] grid grid-cols-3 gap-[54px] max-md:mt-[38px] max-md:grid-cols-1 max-md:gap-11">
-            {homeContent.blogs.items.map(item =>
+          <div className="mt-[64px] grid grid-cols-3 gap-[44px] max-md:mt-[38px] max-md:grid-cols-1 max-md:gap-11">
+            {homeContent.blogs.items.map(item => (
               <a className="block reveal" href={item.href} key={item.title}>
-                <div className="relative aspect-[4/3] w-full overflow-hidden bg-warm max-md:aspect-[1.42/1]">
+                <div className="relative aspect-[0.88/1] w-full overflow-hidden bg-warm max-md:aspect-[1.1/1]">
                   <Image
                     src={item.image}
                     alt={item.alt}
@@ -266,121 +217,97 @@ export default function HomePage() {
                     className="object-cover"
                   />
                 </div>
-                <div className="mt-6 flex flex-wrap gap-[14px] text-[0.64rem] font-extrabold tracking-[0.2em] uppercase text-teal">
-                  <span>
-                    {item.category}
-                  </span>
-                  <span className="text-[rgb(45_47_47/58%)]">
-                    {item.readTime}
-                  </span>
+                <div className="mt-5 flex flex-wrap gap-[12px] text-[0.54rem] font-black uppercase tracking-[0.14em] text-teal/70">
+                  <span>{item.category}</span>
+                  <span>{item.readTime}</span>
                 </div>
-                <h3 className="mb-[10px] mt-[22px] font-display text-[1.35rem] font-extrabold leading-[1.12] uppercase text-teal">
+                <h3 className="mb-[8px] mt-[14px] font-display text-[1rem] font-black uppercase leading-[1.12] text-teal">
                   {item.title}
                 </h3>
-                <p className="m-0 text-charcoal">
-                  {item.text}
-                </p>
+                <p className="m-0 text-[0.88rem] leading-snug text-charcoal">{item.text}</p>
               </a>
-            )}
+            ))}
           </div>
 
-          <a
-            className="btn mt-9 border-teal text-teal md:hidden"
-            href={homeContent.blogs.action.href}
-          >
-            {homeContent.blogs.action.label} →
+          <a className="btn mt-9 border-teal text-teal md:hidden" href={homeContent.blogs.action.href}>
+            {homeContent.blogs.action.label} -&gt;
           </a>
         </div>
       </section>
 
-      {/* ── CTA ── */}
-      <section
-        className="relative grid min-h-[92vh] place-items-center overflow-hidden bg-teal text-warm max-md:min-h-[760px]"
-        id="contact"
-      >
+      <section className="relative -mt-px grid min-h-[760px] place-items-center overflow-hidden bg-teal text-warm" id="contact">
         <Image
-          className="object-cover [filter:grayscale(15%)_contrast(1.04)]"
+          className="object-cover [filter:grayscale(35%)_contrast(1.06)]"
           src={homeContent.cta.image}
           alt=""
           fill
           sizes="100vw"
         />
-        <div className="absolute inset-0 bg-[rgb(16_39_40/88%)]" />
-        <div className="relative z-[2] mx-auto w-[min(calc(100%-48px),1000px)] py-[clamp(96px,14vw,180px)] text-center max-md:w-[min(calc(100%-32px),520px)] max-md:py-[120px]">
-          <h2 className="display text-[clamp(3.2rem,7vw,6.7rem)] max-md:text-[clamp(2.7rem,12vw,4rem)] max-xs:text-[2.45rem] reveal">
+        <div className="absolute inset-0 bg-[rgb(16_39_40/84%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-[260px] bg-gradient-to-b from-transparent to-site-black" />
+
+        <div className="relative z-[2] mx-auto w-[min(calc(100%-48px),1000px)] py-[clamp(108px,14vw,180px)] text-center max-md:w-[min(calc(100%-32px),520px)]">
+          <h2 className="display text-[clamp(3rem,6vw,6rem)] text-warm reveal">
             {homeContent.cta.title}
           </h2>
-          <p className="mx-auto mt-7 text-[1.25rem] text-[rgb(240_240_229/72%)] max-md:text-base">
+          <p className="mx-auto mt-6 text-[1rem] font-bold text-[rgb(240_240_229/76%)]">
             {homeContent.cta.text}
           </p>
-          <a
-            className="btn mt-10 bg-warm text-teal"
-            href={homeContent.appointment.href}
-          >
+          <a className="btn mt-8 bg-warm text-teal" href={homeContent.appointment.href}>
             {homeContent.appointment.label}
           </a>
         </div>
       </section>
 
-      {/* ── FOOTER ── */}
-      <footer className="bg-site-black pb-[54px] pt-[92px] text-silver max-md:pb-11 max-md:pt-[76px]">
+      <footer className="-mt-px bg-site-black pb-[54px] pt-[74px] text-silver max-md:pb-11">
         <div className="site-container grid grid-cols-[1.2fr_0.55fr_1fr] gap-[80px] max-md:grid-cols-1 max-md:gap-10">
           <div className="footer-brand">
-            <E47Logo width={72} height={44} className="text-warm" />
-            <p className="mt-6 mb-3 text-[0.92rem] uppercase">
-              {homeContent.brand.tagline}
-            </p>
-            <div className="mt-12 flex flex-wrap gap-[26px] max-md:mt-9 max-md:gap-[22px]">
-              {homeContent.social.map(item =>
+            <E47Logo width={60} height={38} className="text-warm" />
+            <p className="mb-3 mt-5 text-[0.78rem] uppercase tracking-[0.1em]">{homeContent.brand.tagline}</p>
+            <div className="mt-10 flex flex-wrap gap-[24px] max-md:mt-9">
+              {homeContent.social.map(item => (
                 <a
                   key={item.label}
                   href={item.href}
-                  className="text-[0.72rem] tracking-[0.2em] uppercase text-silver transition-colors duration-[180ms] hover:text-gold"
+                  className="text-[0.62rem] uppercase tracking-[0.16em] text-silver transition-colors duration-[180ms] hover:text-gold"
                 >
                   {item.label}
                 </a>
-              )}
+              ))}
             </div>
           </div>
 
           <div>
-            <h2 className="mb-5 mt-0 text-[0.72rem] tracking-[0.2em] uppercase text-gold">
+            <h2 className="mb-5 mt-0 text-[0.62rem] uppercase tracking-[0.16em] text-gold">
               Navigation
             </h2>
-            {homeContent.navigation.map(item =>
+            {homeContent.navigation.map(item => (
               <a
                 key={item.href}
                 href={item.href}
-                className="mb-3 block text-[0.92rem] text-silver transition-colors duration-[180ms] hover:text-gold"
+                className="mb-3 block text-[0.82rem] text-silver transition-colors duration-[180ms] hover:text-gold"
               >
                 {item.label}
               </a>
-            )}
+            ))}
           </div>
 
           <div>
-            <h2 className="mb-5 mt-0 text-[0.72rem] tracking-[0.2em] uppercase text-gold">
+            <h2 className="mb-5 mt-0 text-[0.62rem] uppercase tracking-[0.16em] text-gold">
               Contact
             </h2>
-            <a
-              href={`mailto:${homeContent.contact.email}`}
-              className="mb-3 block text-[0.92rem] text-silver transition-colors hover:text-gold"
-            >
+            <a href={`mailto:${homeContent.contact.email}`} className="mb-3 block text-[0.82rem] text-silver transition-colors hover:text-gold">
               {homeContent.contact.email}
             </a>
-            <a
-              href={`tel:${homeContent.contact.phone.replaceAll(" ", "")}`}
-              className="mb-3 block text-[0.92rem] text-silver transition-colors hover:text-gold"
-            >
+            <a href={`tel:${homeContent.contact.phone.replaceAll(" ", "")}`} className="mb-3 block text-[0.82rem] text-silver transition-colors hover:text-gold">
               {homeContent.contact.phone}
             </a>
-            <p className="m-0 text-[0.92rem]">
-              {homeContent.contact.address}
-            </p>
+            <p className="m-0 text-[0.82rem]">{homeContent.contact.address}</p>
           </div>
         </div>
-        <div className="site-container mt-[76px] border-t border-[rgb(192_192_192/16%)] pt-[30px]">
-          <p className="m-0 text-[0.72rem] tracking-[0.18em] uppercase text-[rgb(192_192_192/78%)]">
+
+        <div className="site-container mt-[66px] border-t border-[rgb(192_192_192/12%)] pt-[28px]">
+          <p className="m-0 text-[0.62rem] uppercase tracking-[0.16em] text-[rgb(192_192_192/74%)]">
             {homeContent.brand.copyright}
           </p>
         </div>
