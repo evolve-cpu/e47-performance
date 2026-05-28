@@ -15,9 +15,15 @@ export const blogContent = {
     ]
   },
   hero: {
-    eyebrow: "From the Floor",
-    title: "Movement & Recovery Insights.",
+    image:
+      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=85",
+    alt: "Athlete in training session on the floor",
+    title: ["Field notes", "from the floor."],
     text: "Evidence-based writing on rehabilitation, performance, and physical literacy — from the practitioners who live it."
+  },
+  postsSection: {
+    eyebrow: "Blogs",
+    heading: "From the floor."
   },
   posts: [
     {

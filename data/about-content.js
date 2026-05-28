@@ -13,56 +13,83 @@ export const aboutContent = {
       "who is E47"
     ]
   },
+
   hero: {
-    eyebrow: "Who We Are",
-    title: "Built on movement. Driven by evidence.",
-    text: "E47 is Ahmedabad's movement-first performance brand — where physiotherapy, training, and recovery work as one integrated system."
-  },
-  story: {
-    eyebrow: "Our Story",
-    title: "Where structure becomes strength.",
-    text: "E47 was built on a single conviction: that rehabilitation and performance are not separate disciplines. Too many athletes cycle through injuries because their recovery never connected to their training — and their training never accounted for their movement deficits.\n\nWe set out to change that. Every service at E47 — physiotherapy, conditioning, aquatic recovery, youth programs — shares one philosophy: physical literacy. We teach people their body so they can train smarter, recover faster, and move freely for life."
-  },
-  values: {
-    eyebrow: "What Sets Us Apart",
-    title: "A complete movement ecosystem.",
-    items: [
-      {
-        title: "Physical Literacy First",
-        text: "We teach you your body. Independence outlasts any session — we build athletes who don't need us forever."
-      },
-      {
-        title: "One Integrated System",
-        text: "Rehab, training, and recovery don't hand off — they share one philosophy, one floor, one practitioner team."
-      },
-      {
-        title: "Process Over Shortcuts",
-        text: "Need before want. Evidence before assumption. The protocol earns the result — not the other way around."
-      },
-      {
-        title: "Expert-Led, Always",
-        text: "Every session is designed and delivered by qualified practitioners. No interns, no shortcuts on care."
-      },
-      {
-        title: "Inclusive by Design",
-        text: "Open to athletes, kids, MSK patients, and para-athletes, with sponsorships in place to keep the door open."
-      }
+    image:
+      "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=2400&q=85",
+    alt: "",
+    // Each item after the first wraps onto its own line in the heading
+    title: ["Built on movement.", "Guided by care."],
+    // Two short lines rendered as separate paragraphs below the heading
+    text: [
+      "Between treatment and understanding.",
+      "Between what's possible for a body and what's usually done with it."
     ]
   },
+
+  story: {
+    // Rendered as stacked paragraphs on a dark teal background — no separate section heading
+    paragraphs: [
+      "E47 was built by people who had seen that cost from the inside. Two decades inside professional cricket taught us that the strongest practitioners aren't the ones with the most modalities. They're the ones who've built one coherent system, applied it without compromise, and trusted it to work.",
+      "So we built ours. Every service at E47, physiotherapy, conditioning, aquatic therapy, recovery, youth development, answers to the same philosophy: physical literacy. We teach you your body. Then we make sure you don't need us forever."
+    ]
+  },
+
   team: {
     eyebrow: "The Team",
-    title: "People who move with purpose.",
+    title: "Practitioners, not personalities.",
+    subtitle:
+      "Every session is designed and delivered by qualified specialists. Working hands, focused care.",
     members: [
       {
-        name: "Coming Soon",
-        role: "Founder & Lead Physiotherapist",
-        bio: "Specialist in MSK rehabilitation and performance-integrated recovery protocols.",
+        name: "Parthav Patel",
+        role: "Co-Founder, MSK & Sports Rehabilitation Specialist",
+        bio: "MSK, sports injury, and post-surgical rehabilitation specialist.",
         image:
           "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85",
-        alt: "E47 lead physiotherapist"
+        alt: "Parthav Patel"
+      },
+      {
+        name: "Yashpal Parmar",
+        role: "Co-Founder, MSK & Sports Rehabilitation Specialist",
+        bio: "MSK, sports injury, and post-surgical rehabilitation specialist.",
+        image:
+          "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85",
+        alt: "Yashpal Parmar"
+      },
+      {
+        name: "Coming Soon",
+        role: "Performance Coach",
+        bio: "Strength and conditioning specialist with a focus on sport-specific programming.",
+        image:
+          "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85",
+        alt: "E47 Performance Coach"
+      },
+      {
+        name: "Coming Soon",
+        role: "Recovery Specialist",
+        bio: "Aquatic therapy and advanced recovery programming across MSK and sports populations.",
+        image:
+          "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85",
+        alt: "E47 Recovery Specialist"
       }
     ]
   },
+
+  achievements: {
+    eyebrow: "Achievements & Credentials",
+    title: "What we stand on.",
+    // Plain text items — rendered as a separated list beside the heading on desktop
+    items: [
+      "Evidence-based rehabilitation protocols across MSK and sports injuries.",
+      "Integrated performance training for professional, semi-professional, and recreational athletes.",
+      "Aquatic therapy and advanced recovery programming.",
+      "Inclusive para-athlete and youth development programs.",
+      "Accessible programs through sponsorships for low-income individuals.",
+      "Online and home-based care available across Gujarat."
+    ]
+  },
+
   cta: {
     title: "Your journey starts with one honest session.",
     text: "No diagnosis on a phone call. We listen, assess, then build.",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 
 interface TestimonialItem {
@@ -8,6 +8,7 @@ interface TestimonialItem {
   author: string;
   role: string;
   image: string;
+  video?: string;
 }
 
 interface Props {
@@ -20,15 +21,55 @@ interface Props {
 const CARD_W = 376;
 const CARD_H = 540;
 const GAP = 36;
-const STEP = CARD_W + GAP;
 
 export function TestimonialsCarousel({ eyebrow, title, subtitle, items }: Props) {
   const [active, setActive] = useState(1);
+  const [playingIdx, setPlayingIdx] = useState<number | null>(null);
+  // cardW is CARD_W on SSR / initial render, then updated client-side
+  const [cardW, setCardW] = useState(CARD_W);
   const count = items.length;
   const touchX = useRef<number | null>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  const prev = () => setActive(i => (i - 1 + count) % count);
-  const next = () => setActive(i => (i + 1) % count);
+  // Recompute actual card width whenever viewport resizes
+  useEffect(() => {
+    function update() {
+      setCardW(Math.min(CARD_W, Math.floor(window.innerWidth * 0.86)));
+    }
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  const cardH = Math.round((CARD_H / CARD_W) * cardW);
+  const step = cardW + GAP;
+
+  function goTo(i: number) {
+    if (playingIdx !== null) {
+      const vid = videoRefs.current[playingIdx];
+      if (vid) vid.pause();
+      setPlayingIdx(null);
+    }
+    setActive(i);
+  }
+
+  const prev = () => goTo((active - 1 + count) % count);
+  const next = () => goTo((active + 1) % count);
+
+  function handlePlayPause(e: React.MouseEvent, i: number) {
+    e.stopPropagation();
+    if (i !== active) { goTo(i); return; }
+    const vid = videoRefs.current[i];
+    if (!vid) return;
+    if (vid.paused) {
+      vid.muted = false;
+      vid.play().catch(() => {});
+      setPlayingIdx(i);
+    } else {
+      vid.pause();
+      setPlayingIdx(null);
+    }
+  }
 
   function handleTouchStart(e: React.TouchEvent) {
     touchX.current = e.touches[0].clientX;
@@ -50,15 +91,13 @@ export function TestimonialsCarousel({ eyebrow, title, subtitle, items }: Props)
     <section className="overflow-hidden bg-warm pb-[clamp(88px,10vw,132px)] pt-[clamp(96px,11vw,152px)] text-teal">
       <div className="site-container">
         {eyebrow && <p className="eyebrow text-teal reveal">{eyebrow}</p>}
-        <h2 className="display max-w-[560px] text-[clamp(2.25rem,3.7vw,4rem)] text-teal reveal max-md:text-[clamp(2.1rem,9vw,3rem)]">
+        <h2 className="display max-w-[560px] text-[3rem] text-teal max-md:text-[2.25rem] reveal">
           {title.map(line => (
-            <span key={line} className="block">
-              {line}
-            </span>
+            <span key={line} className="block">{line}</span>
           ))}
         </h2>
         {subtitle && (
-          <p className="mt-3 text-[1rem] font-bold leading-tight text-charcoal reveal">
+          <p className="mt-3 text-[2rem] font-bold leading-tight text-charcoal reveal max-md:text-[1.25rem]">
             {subtitle}
           </p>
         )}
@@ -70,10 +109,11 @@ export function TestimonialsCarousel({ eyebrow, title, subtitle, items }: Props)
         onTouchEnd={handleTouchEnd}
       >
         <div
-          className="flex items-end transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] max-md:gap-[36px]"
+          className="flex items-end transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)]"
           style={{
             gap: `${GAP}px`,
-            transform: `translateX(calc(50vw - ${active * STEP + CARD_W / 2}px))`,
+            // JS-computed transform so centering is exact at every viewport width
+            transform: `translateX(calc(50vw - ${active * step + cardW / 2}px))`,
             willChange: "transform"
           }}
         >
@@ -82,35 +122,60 @@ export function TestimonialsCarousel({ eyebrow, title, subtitle, items }: Props)
             const d = dist(i);
             const opacity = d === 0 ? 1 : d === 1 ? 0.58 : 0.24;
             const scale = isActive ? 1 : d === 1 ? 0.82 : 0.68;
+            const isPlaying = playingIdx === i;
 
             return (
-              <button
+              <div
                 key={item.author + item.role}
-                className="relative flex-shrink-0 cursor-pointer overflow-hidden rounded-[1px] bg-[#d7d7ca] text-left"
+                className="relative flex-shrink-0 overflow-hidden rounded-[1px] bg-[#d7d7ca] text-left"
                 style={{
-                  width: `min(${CARD_W}px, 86vw)`,
-                  height: `min(${CARD_H}px, 152vw)`,
+                  width: `${cardW}px`,
+                  height: `${cardH}px`,
                   opacity,
                   transform: `scale(${scale})`,
                   transformOrigin: "bottom center",
-                  transition:
-                    "opacity 0.5s ease, transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)"
+                  transition: "opacity 0.5s ease, transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94)",
+                  cursor: isActive ? "default" : "pointer"
                 }}
-                onClick={() => setActive(i)}
-                aria-label={`View ${item.author} testimonial: ${item.quote}`}
+                onClick={() => { if (!isActive) goTo(i); }}
               >
-                <Image
-                  src={item.image}
-                  alt={item.author}
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 820px) 74vw, 344px"
-                />
+                {item.video ? (
+                  <video
+                    ref={(el: HTMLVideoElement | null) => { videoRefs.current[i] = el; }}
+                    src={item.video}
+                    muted
+                    loop
+                    playsInline
+                    preload="metadata"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                ) : (
+                  <Image
+                    src={item.image}
+                    alt={item.author}
+                    fill
+                    className="object-cover"
+                    sizes="(max-width: 820px) 86vw, 344px"
+                  />
+                )}
+
                 <div className="absolute inset-0 bg-gradient-to-t from-[#193435]/88 via-[#193435]/16 to-[#f0f0e5]/18" />
 
-                <span className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-warm/70 backdrop-blur-[2px]">
-                  <span className="ml-1 block h-0 w-0 border-y-[9px] border-l-[14px] border-y-transparent border-l-teal" />
-                </span>
+                <button
+                  type="button"
+                  aria-label={isPlaying ? "Pause" : "Play"}
+                  onClick={e => item.video ? handlePlayPause(e, i) : e.stopPropagation()}
+                  className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-warm/70 backdrop-blur-[2px] transition-opacity duration-300"
+                >
+                  {isPlaying ? (
+                    <span className="flex gap-[5px]">
+                      <span className="block h-[18px] w-1 rounded-[1px] bg-teal" />
+                      <span className="block h-[18px] w-1 rounded-[1px] bg-teal" />
+                    </span>
+                  ) : (
+                    <span className="ml-1 block h-0 w-0 border-y-[9px] border-l-[14px] border-y-transparent border-l-teal" />
+                  )}
+                </button>
 
                 {isActive && (
                   <span
@@ -127,7 +192,7 @@ export function TestimonialsCarousel({ eyebrow, title, subtitle, items }: Props)
                     {item.role}
                   </span>
                 </span>
-              </button>
+              </div>
             );
           })}
         </div>
@@ -147,12 +212,11 @@ export function TestimonialsCarousel({ eyebrow, title, subtitle, items }: Props)
           {items.map((item, i) => (
             <button
               key={item.author + i}
-              onClick={() => setActive(i)}
+              type="button"
+              onClick={() => goTo(i)}
               aria-label={`View testimonial ${i + 1}`}
               className="h-2 w-2 transition-colors duration-300"
-              style={{
-                background: i === active ? "rgb(25 52 53)" : "rgb(25 52 53 / 20%)"
-              }}
+              style={{ background: i === active ? "rgb(25 52 53)" : "rgb(25 52 53 / 20%)" }}
             />
           ))}
         </div>

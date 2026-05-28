@@ -5,26 +5,18 @@ export const aboutContent: {
     keywords: string[];
   };
   hero: {
-    eyebrow: string;
-    title: string;
-    text: string;
+    image: string;
+    alt: string;
+    title: string[];
+    text: string[];
   };
   story: {
-    eyebrow: string;
-    title: string;
-    text: string;
-  };
-  values: {
-    eyebrow: string;
-    title: string;
-    items: Array<{
-      title: string;
-      text: string;
-    }>;
+    paragraphs: string[];
   };
   team: {
     eyebrow: string;
     title: string;
+    subtitle: string;
     members: Array<{
       name: string;
       role: string;
@@ -32,6 +24,11 @@ export const aboutContent: {
       image: string;
       alt: string;
     }>;
+  };
+  achievements: {
+    eyebrow: string;
+    title: string;
+    items: string[];
   };
   cta: {
     title: string;

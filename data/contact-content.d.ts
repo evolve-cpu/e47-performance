@@ -5,7 +5,8 @@ export const contactContent: {
     keywords: string[];
   };
   hero: {
-    eyebrow: string;
+    image: string;
+    alt: string;
     title: string;
     text: string;
   };
@@ -19,6 +20,7 @@ export const contactContent: {
     }>;
   };
   form: {
+    eyebrow: string;
     heading: string;
     fields: {
       name: string;

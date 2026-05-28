@@ -84,7 +84,7 @@
     border: 1px solid transparent;
     border-radius: 2px;
     padding: 0 24px;
-    font-size: 0.72rem;
+    font-size: 1rem;
     font-weight: 800;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -175,6 +175,5 @@
 
   .btn {
     padding-inline: 18px;
-    font-size: 0.66rem;
   }
 }

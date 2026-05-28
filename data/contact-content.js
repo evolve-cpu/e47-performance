@@ -14,9 +14,11 @@ export const contactContent = {
     ]
   },
   hero: {
-    eyebrow: "Get in Touch",
-    title: "Your first session starts here.",
-    text: "No diagnosis on a phone call. We listen, assess, then build a program around you."
+    image:
+      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=85",
+    alt: "Physiotherapist working with a patient on the floor",
+    title: "Begin here.",
+    text: "Your first session starts with listening. Book a time or send us a message."
   },
   details: {
     email: "contact@e47performance.com",
@@ -29,13 +31,14 @@ export const contactContent = {
     ]
   },
   form: {
-    heading: "Send us a message",
+    eyebrow: "Send us a message",
+    heading: "Tell us where you are starting from.",
     fields: {
       name: "Full Name",
       email: "Email Address",
       phone: "Phone Number",
-      service: "Service of Interest",
-      message: "Tell us about yourself"
+      service: "What brings you in",
+      message: "Tell us what is going on"
     },
     services: [
       "Physiotherapy & Rehabilitation",

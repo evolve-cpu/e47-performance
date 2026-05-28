@@ -5,9 +5,14 @@ export const blogContent: {
     keywords: string[];
   };
   hero: {
-    eyebrow: string;
-    title: string;
+    image: string;
+    alt: string;
+    title: string[];
     text: string;
+  };
+  postsSection: {
+    eyebrow: string;
+    heading: string;
   };
   posts: Array<{
     slug: string;

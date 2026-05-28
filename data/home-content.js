@@ -111,6 +111,8 @@ export const homeContent = {
         quote: "E47 helped me trust my body again.",
         author: "Rakesh",
         role: "Para Athlete",
+        video:
+          "https://res.cloudinary.com/diuswhkzn/video/upload/v1779966012/WhatsApp_Video_2026-05-24_at_2.32.03_PM_bcynh3.mp4",
         image:
           "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80"
       },
@@ -118,6 +120,8 @@ export const homeContent = {
         quote: "Every session had a reason, and every reason changed how I trained.",
         author: "Mana Patel",
         role: "Indian Olympic Swimmer",
+        video:
+          "https://res.cloudinary.com/diuswhkzn/video/upload/v1779965942/WhatsApp_Video_2026-05-24_at_2.26.14_PM_jjuug1.mp4",
         image:
           "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&q=80"
       },
@@ -125,15 +129,10 @@ export const homeContent = {
         quote: "They treated the person, not just the injury.",
         author: "Himanshu Mittal",
         role: "International Badminton Player",
+        video:
+          "https://res.cloudinary.com/diuswhkzn/video/upload/v1779965940/WhatsApp_Video_2026-05-25_at_11.32.33_AM_tchdvh.mp4",
         image:
           "https://images.unsplash.com/photo-1463453091185-61582044d556?auto=format&fit=crop&w=600&q=80"
-      },
-      {
-        quote: "The work felt honest, measured, and personal.",
-        author: "Rakesh",
-        role: "MSK Athlete",
-        image:
-          "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?auto=format&fit=crop&w=600&q=80"
       }
     ]
   },
