@@ -13,22 +13,51 @@ export default function Image() {
     (
       <div
         style={{
-          background: "#f6f2ea",
-          color: "#111827",
+          background: "#193435",
+          color: "#f0f0e5",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          padding: 72,
-          fontFamily: "Arial, sans-serif"
+          padding: 80,
+          fontFamily: "Arial Black, Impact, sans-serif"
         }}
       >
-        <div style={{ fontSize: 34, color: "#355070" }}>{siteConfig.name}</div>
-        <div style={{ fontSize: 74, lineHeight: 1.05, maxWidth: 860 }}>
-          SEO-ready performance website foundation
+        <div
+          style={{
+            fontSize: 22,
+            fontWeight: 700,
+            letterSpacing: "0.2em",
+            textTransform: "uppercase",
+            color: "#d6b36c"
+          }}
+        >
+          {siteConfig.name}
         </div>
-        <div style={{ fontSize: 28, color: "#4b5563" }}>{siteConfig.url}</div>
+
+        <div
+          style={{
+            fontSize: 80,
+            fontWeight: 900,
+            lineHeight: 0.92,
+            textTransform: "uppercase",
+            maxWidth: 900
+          }}
+        >
+          Reset. Rebuild. Rise.
+        </div>
+
+        <div
+          style={{
+            fontSize: 22,
+            fontWeight: 400,
+            color: "rgba(240,240,229,0.65)",
+            letterSpacing: "0.04em"
+          }}
+        >
+          Movement-first physiotherapy, performance &amp; recovery · Ahmedabad
+        </div>
       </div>
     ),
     size

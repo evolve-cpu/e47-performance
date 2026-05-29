@@ -29,7 +29,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[rgb(16_39_40/78%)]" />
         <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent to-site-black" />
         <div className="site-container relative z-[2] flex min-h-[100svh] flex-col justify-end pb-[clamp(52px,7vw,96px)] pt-[62px]">
-          <h1 className="display max-w-[820px] text-[clamp(3rem,6.5vw,6.5rem)]">
+          <h1 className="display max-w-[820px] text-[64px] leading-18 max-md:text-[36px] max-md:leading-10">
             {aboutContent.hero.title[0]}
             {aboutContent.hero.title.slice(1).map((line, i) => (
               <span key={i} className="block">{line}</span>
@@ -37,7 +37,7 @@ export default function AboutPage() {
           </h1>
           <div className="mt-5 max-w-[560px]">
             {aboutContent.hero.text.map((line, i) => (
-              <p key={i} className="m-0 text-[1.08rem] text-[rgb(240_240_229/72%)] max-md:text-base">
+              <p key={i} className="m-0 text-[32px] leading-10 font-light text-[rgb(240_240_229/72%)] max-md:text-[20px] max-md:leading-6">
                 {line}
               </p>
             ))}
@@ -46,14 +46,13 @@ export default function AboutPage() {
       </section>
 
       {/* ── STORY ── */}
-      <section className="bg-site-black py-[clamp(80px,10vw,140px)] text-warm">
-        <div className="site-container grid grid-cols-2 items-start gap-[clamp(48px,8vw,100px)] max-md:grid-cols-1">
-          <div />
-          <div className="reveal">
+      <section className="bg-site-black py-[clamp(80px,10vw,140px)] text-warm text-center">
+        <div className="site-container">
+          <div className="mx-auto max-w-[760px] reveal">
             {aboutContent.story.paragraphs.map((para, i) => (
               <p
                 key={i}
-                className={`m-0 text-[1.18rem] text-[rgb(240_240_229/72%)] max-md:text-base${i > 0 ? " mt-7" : ""}`}
+                className={`m-0 text-[24px] leading-8 font-light text-[rgb(240_240_229/72%)] max-md:text-[14px] max-md:leading-4.5${i > 0 ? " mt-7" : ""}`}
               >
                 {para}
               </p>
@@ -66,10 +65,10 @@ export default function AboutPage() {
       <section className="bg-warm py-[clamp(88px,11vw,156px)] text-teal max-md:py-[66px]">
         <div className="site-container">
           <p className="eyebrow text-teal reveal">{aboutContent.team.eyebrow}</p>
-          <h2 className="display text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] reveal">
+          <h2 className="display text-teal text-[48px] leading-14 max-md:text-[28px] max-md:leading-8 reveal">
             {aboutContent.team.title}
           </h2>
-          <p className="mt-4 max-w-[640px] text-[1.06rem] text-charcoal reveal max-md:text-base">
+          <p className="mt-4 max-w-[640px] text-[24px] leading-8 font-light text-charcoal reveal max-md:text-[14px] max-md:leading-4.5">
             {aboutContent.team.subtitle}
           </p>
           <div className="mt-14 grid grid-cols-4 gap-9 max-lg:grid-cols-2 max-md:gap-[36px]">
@@ -102,7 +101,7 @@ export default function AboutPage() {
         <div className="site-container grid grid-cols-[minmax(0,0.9fr)_minmax(320px,0.95fr)] items-start gap-[clamp(48px,8vw,130px)] max-md:grid-cols-1 max-md:gap-10">
           <div className="reveal">
             <p className="eyebrow text-teal">{aboutContent.achievements.eyebrow}</p>
-            <h2 className="display text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)]">
+            <h2 className="display text-teal text-[48px] leading-14 max-md:text-[28px] max-md:leading-8">
               {aboutContent.achievements.title}
             </h2>
           </div>
@@ -110,7 +109,7 @@ export default function AboutPage() {
             {aboutContent.achievements.items.map((item, i) => (
               <li
                 key={i}
-                className="m-0 list-none border-b border-teal/14 py-5 first:pt-0 last:border-0 last:pb-0 text-[1.06rem] leading-snug text-charcoal"
+                className="m-0 list-none border-b border-teal/14 py-5 first:pt-0 last:border-0 last:pb-0 text-[24px] leading-8 font-light text-charcoal max-md:text-[14px] max-md:leading-4.5"
               >
                 {item}
               </li>
@@ -131,10 +130,10 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-[rgb(16_39_40/84%)]" />
         <div className="absolute inset-x-0 bottom-0 h-[260px] bg-gradient-to-b from-transparent to-site-black" />
         <div className="relative z-[2] mx-auto w-[min(calc(100%-48px),1000px)] py-[clamp(108px,14vw,180px)] text-center max-md:w-[min(calc(100%-32px),520px)]">
-          <h2 className="display text-[clamp(3rem,6vw,6rem)] text-warm reveal">
+          <h2 className="display text-[96px] leading-26 text-warm max-md:text-[36px] max-md:leading-10 reveal">
             {aboutContent.cta.title}
           </h2>
-          <p className="mx-auto mt-6 text-[1rem] font-bold text-[rgb(240_240_229/76%)]">
+          <p className="mx-auto mt-6 text-[24px] leading-8 font-light text-[rgb(240_240_229/76%)] max-md:text-[14px] max-md:leading-4.5">
             {aboutContent.cta.text}
           </p>
           <a className="btn mt-8 bg-warm text-teal" href={aboutContent.cta.buttonHref}>

@@ -3,17 +3,50 @@
 import { useState, FormEvent } from "react";
 import { contactContent } from "@/data/contact-content";
 
-export function ContactForm() {
-  const [submitted, setSubmitted] = useState(false);
+type Status = "idle" | "loading" | "success" | "error";
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+export function ContactForm() {
+  const [status, setStatus] = useState<Status>("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setSubmitted(true);
+    setStatus("loading");
+    setErrorMsg("");
+
+    const form = e.currentTarget;
+    const data = Object.fromEntries(new FormData(form));
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY,
+          from_name: "E47 Performance Website",
+          subject: `New contact from ${data.name}`,
+          ...data
+        })
+      });
+
+      const json = await res.json();
+
+      if (json.success) {
+        setStatus("success");
+        form.reset();
+      } else {
+        setStatus("error");
+        setErrorMsg(json.message ?? "Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("error");
+      setErrorMsg("Network error. Please check your connection and try again.");
+    }
   }
 
-  if (submitted) {
+  if (status === "success") {
     return (
-      <div className="mt-10 rounded-[2px] border border-teal/20 bg-teal/5 p-10 text-center">
+      <div className="mt-10 border border-teal/20 bg-teal/5 p-10 text-center rounded-xs">
         <p className="m-0 text-[1.18rem] font-bold text-teal">
           Message received. We&apos;ll be in touch within 24 hours.
         </p>
@@ -70,8 +103,16 @@ export function ContactForm() {
         />
       </div>
 
-      <button type="submit" className="btn bg-teal text-warm hover:opacity-80">
-        {contactContent.form.submitLabel}
+      {status === "error" && (
+        <p className="text-[0.88rem] text-red-600">{errorMsg}</p>
+      )}
+
+      <button
+        type="submit"
+        disabled={status === "loading"}
+        className="btn bg-teal text-warm hover:opacity-80 disabled:opacity-50"
+      >
+        {status === "loading" ? "Sending…" : contactContent.form.submitLabel}
       </button>
     </form>
   );

@@ -17,7 +17,7 @@ export default function HomePage() {
       <ScrollReveal />
 
       <section
-        className="relative min-h-[720px] overflow-hidden bg-teal max-md:min-h-[100svh]"
+        className="relative min-h-[100svh] overflow-hidden bg-teal"
         id="top"
       >
         {homeContent.hero.mediaType === "video" && homeContent.hero.video
@@ -41,7 +41,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(16_39_40/68%)_0%,rgb(16_39_40/58%)_44%,rgb(15_15_15/96%)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-[34%] bg-gradient-to-b from-transparent to-site-black" />
 
-        <div className="site-container relative z-[2] flex min-h-[720px] items-center pt-[62px] text-warm max-md:min-h-[100svh] max-md:items-end max-md:pb-[90px]">
+        <div className="site-container relative z-[2] flex min-h-[100svh] items-center pt-[62px] text-warm max-md:items-end max-md:pb-[90px]">
           <div>
             <h1 className="display max-w-[520px] text-[clamp(5rem,9.375vw,7.5rem)] max-md:max-w-[330px] max-md:text-[clamp(3rem,17.1vw,4rem)]">
               {homeContent.hero.title.map(line =>
@@ -50,7 +50,7 @@ export default function HomePage() {
                 </span>
               )}
             </h1>
-            <p className="mt-5 max-w-[700px] text-[2rem] font-regular leading-[2.4rem] text-[rgb(240_240_229/82%)] max-md:max-w-[320px] max-md:text-[1.5rem]">
+            <p className="mt-5 max-w-[560px] text-[1.5rem] font-light leading-relaxed text-[rgb(240_240_229/82%)] max-md:max-w-[320px] max-md:text-[1.25rem]">
               {homeContent.hero.text}
             </p>
             <div className="mt-6 flex flex-wrap gap-3 max-md:grid max-md:w-[min(100%,290px)]">
@@ -81,7 +81,7 @@ export default function HomePage() {
               {homeContent.philosophy.title}
             </h2>
           </div>
-          <p className="reveal m-0 max-w-[600px] text-[2rem] leading-[2.4rem] text-[rgb(240_240_229/72%)] max-md:text-[1.5rem]">
+          <p className="reveal m-0 max-w-[600px] text-[1.5rem] font-light leading-relaxed text-[rgb(240_240_229/72%)] max-md:text-[1rem]">
             {homeContent.philosophy.text}
           </p>
         </div>
@@ -100,28 +100,57 @@ export default function HomePage() {
               {homeContent.expertise.title}
             </span>
           </h2>
+        </div>
 
-          <div className="mt-14 grid grid-cols-3 gap-2 max-md:grid-cols-1 max-md:gap-[46px]">
-            {homeContent.expertise.items.map(item =>
-              <article key={item.title} className="reveal">
-                <div className="relative aspect-[0.8/1] w-full overflow-hidden bg-teal-deep">
-                  <Image
-                    src={item.image}
-                    alt={item.alt}
-                    fill
-                    sizes="(max-width: 820px) 100vw, 33vw"
-                    className="object-cover [filter:contrast(1.03)]"
-                  />
-                </div>
-                <h3 className="mb-[9px] mt-[22px] font-display text-[1.05rem] font-black uppercase leading-none">
+        {/* Full-width image grid — no site-container so images reach the edges */}
+        {/* <div className="mt-14 grid grid-cols-3 gap-10 max-w-[95%] justify-center items-center max-md:grid-cols-1 max-md:gap-10">
+          {homeContent.expertise.items.map(item =>
+            <article key={item.title} className="reveal">
+              <div className="relative aspect-[0.8/1] w-full overflow-hidden bg-teal-deep">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 820px) 100vw, 33vw"
+                  className="object-cover [filter:contrast(1.03)]"
+                />
+              </div>
+              <div className="px-5 pt-5">
+                <h3 className="mb-[6px] mt-0 font-display text-[1.05rem] font-black uppercase leading-none">
                   {item.title}
                 </h3>
                 <span className="block text-[0.58rem] font-black uppercase tracking-[0.12em] text-gold">
                   {item.tags}
                 </span>
-              </article>
-            )}
-          </div>
+              </div>
+            </article>
+          )}
+        </div> */}
+        {/* <div className="mt-14 mx-auto grid grid-cols-3 justify-items-center gap-1 max-w-[95%] max-md:grid-cols-1 max-md:gap-10 md:max-w-[80%]"> */}
+        <div className="mt-14 mx-auto grid grid-cols-3 justify-items-center gap-10 max-w-[95%] max-md:max-w-[90%] max-md:grid-cols-1 max-md:gap-10">
+          {homeContent.expertise.items.map(item =>
+            <article key={item.title} className="reveal w-full max-w-[450px]">
+              <div className="relative aspect-[0.8/1] w-full overflow-hidden bg-teal-deep">
+                <Image
+                  src={item.image}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 820px) 100vw, 33vw"
+                  className="object-cover [filter:contrast(1.03)]"
+                />
+              </div>
+
+              <div className="px-5 pt-5">
+                <h3 className="mb-[6px] mt-0 font-display text-[1.05rem] font-black uppercase leading-none">
+                  {item.title}
+                </h3>
+
+                <span className="block text-[0.58rem] font-black uppercase tracking-[0.12em] text-gold">
+                  {item.tags}
+                </span>
+              </div>
+            </article>
+          )}
         </div>
       </section>
 
@@ -135,7 +164,6 @@ export default function HomePage() {
             sizes="100vw"
           />}
         <div className="absolute inset-0 bg-[rgb(12_31_32/76%)]" />
-        <div className="absolute inset-y-0 left-0 right-0 bg-[linear-gradient(180deg,#193435_0%,rgb(15_15_15/18%)_22%,rgb(15_15_15/38%)_70%,#0f0f0f_100%)]" />
 
         <div className="site-container relative z-[2]">
           <h2 className="display max-w-[900px] text-[3rem] text-warm max-md:text-[2.25rem] reveal">
@@ -144,10 +172,10 @@ export default function HomePage() {
           <div className="mt-[clamp(74px,10vw,136px)] grid grid-cols-3 gap-x-[70px] gap-y-[52px] max-md:mt-11 max-md:grid-cols-1 max-md:gap-[30px]">
             {homeContent.difference.items.map(item =>
               <article key={item.title} className="reveal">
-                <h3 className="mb-[8px] mt-0 font-display text-[2rem] font-black uppercase leading-none text-warm max-md:text-[1.25rem]">
+                <h3 className="mb-[8px] mt-0 font-display text-[1.5rem] font-black uppercase leading-none text-warm max-md:text-[1rem]">
                   {item.title}
                 </h3>
-                <p className="m-0 text-[1.5rem] leading-snug text-[rgb(240_240_229/72%)] max-md:text-[1.25rem]">
+                <p className="m-0 text-[1.25rem] font-light leading-snug text-[rgb(240_240_229/72%)] max-md:text-[1rem]">
                   {item.text}
                 </p>
               </article>
@@ -239,7 +267,7 @@ export default function HomePage() {
           <h2 className="display text-[6rem] text-warm max-md:text-[3rem] reveal">
             {homeContent.cta.title}
           </h2>
-          <p className="mx-auto mt-6 text-[2rem] font-medium text-[rgb(240_240_229/76%)] max-md:text-[1.25rem]">
+          <p className="mx-auto mt-6 text-[1.5rem] font-light text-[rgb(240_240_229/76%)] max-md:text-[1rem]">
             {homeContent.cta.text}
           </p>
           <a

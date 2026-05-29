@@ -29,15 +29,12 @@ export default function BlogPage() {
         <div className="absolute inset-0 bg-[rgb(16_39_40/78%)]" />
         <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent to-site-black" />
         <div className="site-container relative z-[2] flex min-h-[100svh] flex-col justify-end pb-[clamp(52px,7vw,96px)] pt-[62px]">
-          <h1 className="display max-w-[820px] text-[clamp(3rem,6.5vw,6.5rem)]">
+          <h1 className="display max-w-[820px] text-[64px] leading-18 max-md:text-[36px] max-md:leading-10">
             {blogContent.hero.title[0]}
             {blogContent.hero.title.slice(1).map((line, i) => (
               <span key={i} className="block">{line}</span>
             ))}
           </h1>
-          <p className="mt-5 max-w-[560px] text-[1.08rem] text-[rgb(240_240_229/72%)] max-md:text-base">
-            {blogContent.hero.text}
-          </p>
         </div>
       </section>
 
@@ -45,7 +42,7 @@ export default function BlogPage() {
       <section className="bg-warm py-[clamp(88px,11vw,156px)] text-teal max-md:py-[66px]">
         <div className="site-container">
           <p className="eyebrow text-teal reveal">{blogContent.postsSection.eyebrow}</p>
-          <h2 className="display text-teal text-[clamp(3.2rem,7vw,6.5rem)] max-md:text-[clamp(2.55rem,12vw,4rem)] reveal">
+          <h2 className="display text-teal text-[48px] leading-14 max-md:text-[28px] max-md:leading-8 reveal">
             {blogContent.postsSection.heading}
           </h2>
           <div className="mt-14 grid grid-cols-3 gap-[54px] max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-11">
@@ -86,10 +83,10 @@ export default function BlogPage() {
         <div className="absolute inset-0 bg-[rgb(16_39_40/84%)]" />
         <div className="absolute inset-x-0 bottom-0 h-[260px] bg-gradient-to-b from-transparent to-site-black" />
         <div className="relative z-[2] mx-auto w-[min(calc(100%-48px),1000px)] py-[clamp(108px,14vw,180px)] text-center max-md:w-[min(calc(100%-32px),520px)]">
-          <h2 className="display text-[clamp(3rem,6vw,6rem)] text-warm reveal">
+          <h2 className="display text-[96px] leading-26 text-warm max-md:text-[36px] max-md:leading-10 reveal">
             {homeContent.cta.title}
           </h2>
-          <p className="mx-auto mt-6 text-[1rem] font-bold text-[rgb(240_240_229/76%)]">
+          <p className="mx-auto mt-6 text-[24px] leading-8 font-light text-[rgb(240_240_229/76%)] max-md:text-[14px] max-md:leading-4.5">
             {homeContent.cta.text}
           </p>
           <a className="btn mt-8 bg-warm text-teal" href={homeContent.appointment.href}>
