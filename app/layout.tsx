@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto, Archivo } from "next/font/google";
-import { organizationSchema, websiteSchema, JsonLd } from "@/lib/schema";
+import { organizationSchema, websiteSchema, localBusinessSchema, JsonLd } from "@/lib/schema";
 import { createMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
@@ -30,6 +30,7 @@ export default function RootLayout({
       <body className="bg-warm font-sans text-[17px] leading-[1.55] text-charcoal">
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
+        <JsonLd data={localBusinessSchema()} />
         <SiteHeader />
         <main>{children}</main>
         <SiteFooter />

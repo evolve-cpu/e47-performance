@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
-import { siteConfig } from "@/data/site";
+import { readFileSync } from "fs";
+import { join } from "path";
 
 export const size = {
   width: 1200,
@@ -7,56 +8,56 @@ export const size = {
 };
 
 export const contentType = "image/png";
+export const runtime = "nodejs";
 
 export default function Image() {
+  const svgRaw = readFileSync(join(process.cwd(), "app/icon.svg"));
+  const logoSrc = `data:image/svg+xml;base64,${svgRaw.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
         style={{
           background: "#193435",
-          color: "#f0f0e5",
           width: "100%",
           height: "100%",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-between",
-          padding: 80,
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 36,
           fontFamily: "Arial Black, Impact, sans-serif"
         }}
       >
+        <img src={logoSrc} width={240} height={240} alt="E47 Performance logo" style={{ objectFit: "contain" }} />
         <div
           style={{
-            fontSize: 22,
-            fontWeight: 700,
-            letterSpacing: "0.2em",
-            textTransform: "uppercase",
-            color: "#d6b36c"
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            gap: 14
           }}
         >
-          {siteConfig.name}
-        </div>
-
-        <div
-          style={{
-            fontSize: 80,
-            fontWeight: 900,
-            lineHeight: 0.92,
-            textTransform: "uppercase",
-            maxWidth: 900
-          }}
-        >
-          Reset. Rebuild. Rise.
-        </div>
-
-        <div
-          style={{
-            fontSize: 22,
-            fontWeight: 400,
-            color: "rgba(240,240,229,0.65)",
-            letterSpacing: "0.04em"
-          }}
-        >
-          Movement-first physiotherapy, performance &amp; recovery · Ahmedabad
+          <div
+            style={{
+              fontSize: 18,
+              fontWeight: 700,
+              letterSpacing: "0.22em",
+              textTransform: "uppercase",
+              color: "#d6b36c"
+            }}
+          >
+            E47 PERFORMANCE
+          </div>
+          <div
+            style={{
+              fontSize: 17,
+              color: "rgba(240,240,229,0.55)",
+              letterSpacing: "0.05em"
+            }}
+          >
+            Physiotherapy · Performance · Recovery · Ahmedabad
+          </div>
         </div>
       </div>
     ),

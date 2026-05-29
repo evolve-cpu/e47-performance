@@ -6,8 +6,7 @@ export function organizationSchema() {
     "@type": "Organization",
     name: siteConfig.name,
     url: siteConfig.url,
-    email: siteConfig.contactEmail,
-    sameAs: Object.values(siteConfig.social)
+    email: siteConfig.contactEmail
   };
 }
 
@@ -17,6 +16,49 @@ export function websiteSchema() {
     "@type": "WebSite",
     name: siteConfig.name,
     url: siteConfig.url
+  };
+}
+
+export function localBusinessSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalBusiness",
+    "@id": `${siteConfig.url}/#localbusiness`,
+    name: siteConfig.name,
+    description: siteConfig.description,
+    url: siteConfig.url,
+    telephone: "+91 34734 73473",
+    email: siteConfig.contactEmail,
+    image: `${siteConfig.url}/opengraph-image`,
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "near Sun Villas bungalows, Thaltej",
+      addressLocality: "Ahmedabad",
+      addressRegion: "Gujarat",
+      postalCode: "380059",
+      addressCountry: "IN"
+    },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+        opens: "07:00",
+        closes: "20:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday"],
+        opens: "08:00",
+        closes: "18:00"
+      }
+    ],
+    medicalSpecialty: "Physiotherapy",
+    availableService: [
+      { "@type": "MedicalTherapy", name: "Physiotherapy & Rehabilitation" },
+      { "@type": "MedicalTherapy", name: "Performance Training" },
+      { "@type": "MedicalTherapy", name: "Recovery & Wellness" },
+      { "@type": "MedicalTherapy", name: "Aquatic Therapy" }
+    ]
   };
 }
 

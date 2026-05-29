@@ -1,6 +1,6 @@
 export const siteConfig = {
   name: "E47 Performance",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://e47performance.com",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.e47performance.com",
   description:
     "Movement-first physiotherapy, performance training, and recovery in Ahmedabad, Gujarat.",
   locale: "en_US",
