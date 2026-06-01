@@ -30,7 +30,7 @@ export default function HomePage() {
         />
         {homeContent.hero.mediaType === "video" && homeContent.hero.video &&
           <video
-            className="absolute inset-0 hidden h-full w-full object-cover [filter:grayscale(25%)_contrast(1.05)] md:block"
+            className="absolute inset-0 h-full w-full object-cover [filter:grayscale(25%)_contrast(1.05)]"
             autoPlay
             muted
             loop
@@ -39,6 +39,11 @@ export default function HomePage() {
             poster={homeContent.hero.image}
             aria-hidden="true"
           >
+            {homeContent.hero.mobileVideo &&
+              <source
+                src={homeContent.hero.mobileVideo}
+                media="(max-width: 819px)"
+              />}
             <source
               src={homeContent.hero.video}
               media="(min-width: 820px)"

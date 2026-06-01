@@ -21,6 +21,7 @@ export const homeContent: {
     mediaType: "image" | "video";
     image: string;
     video: string;
+    mobileVideo?: string;
     title: string[];
     text: string;
     secondaryAction: {

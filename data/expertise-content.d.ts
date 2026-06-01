@@ -6,6 +6,8 @@ export const expertiseContent: {
   };
   hero: {
     image: string;
+    video?: string;
+    mobileVideo?: string;
     alt: string;
     title: string[];
     text: string;

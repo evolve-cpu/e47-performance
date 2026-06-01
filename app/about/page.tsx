@@ -28,7 +28,7 @@ export default function AboutPage() {
         />
         {aboutContent.hero.video &&
           <video
-            className="absolute inset-0 hidden h-full w-full object-cover [filter:grayscale(20%)_contrast(1.04)] md:block"
+            className="absolute inset-0 h-full w-full object-cover [filter:grayscale(20%)_contrast(1.04)]"
             autoPlay
             muted
             loop
@@ -37,6 +37,11 @@ export default function AboutPage() {
             poster={aboutContent.hero.image}
             aria-hidden="true"
           >
+            {aboutContent.hero.mobileVideo &&
+              <source
+                src={aboutContent.hero.mobileVideo}
+                media="(max-width: 819px)"
+              />}
             <source
               src={aboutContent.hero.video}
               media="(min-width: 820px)"

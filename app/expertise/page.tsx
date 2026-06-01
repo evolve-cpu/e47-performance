@@ -126,6 +126,27 @@ export default function ExpertisePage() {
           priority
           sizes="100vw"
         />
+        {expertiseContent.hero.video &&
+          <video
+            className="absolute inset-0 h-full w-full object-cover [filter:grayscale(35%)_contrast(1.05)]"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={expertiseContent.hero.image}
+            aria-hidden="true"
+          >
+            {expertiseContent.hero.mobileVideo &&
+              <source
+                src={expertiseContent.hero.mobileVideo}
+                media="(max-width: 819px)"
+              />}
+            <source
+              src={expertiseContent.hero.video}
+              media="(min-width: 820px)"
+            />
+          </video>}
         <div className="absolute inset-0 bg-[rgb(16_39_40/78%)]" />
         <div className="absolute inset-x-0 bottom-0 h-[42%] bg-gradient-to-b from-transparent to-site-black" />
         <div className="site-container relative z-[2] flex min-h-[100svh] flex-col justify-end pb-[clamp(52px,7vw,96px)] pt-[62px]">

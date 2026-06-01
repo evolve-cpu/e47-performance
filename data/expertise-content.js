@@ -14,7 +14,13 @@ export const expertiseContent = {
 
   hero: {
     image:
-      "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=2400&q=85",
+      "https://res.cloudinary.com/diuswhkzn/image/upload/v1780318583/Kettlebell-Gruppe-s_1_fsdf6l.png",
+    // image:
+    //   "https://images.unsplash.com/photo-1599447421416-3414500d18a5?auto=format&fit=crop&w=2400&q=85",
+    video:
+      "https://res.cloudinary.com/diuswhkzn/video/upload/f_auto,q_auto:eco,w_1920/v1780318079/expertise_hero_landscape_thfzhs.mp4",
+    mobileVideo:
+      "https://res.cloudinary.com/diuswhkzn/video/upload/f_auto,q_auto:eco,w_900/v1780318078/expertise_hero_portrait_nlfq2q.mp4",
     alt: "",
     // First item becomes the main heading line; each subsequent item wraps in its own block
     title: ["Three Disciplines.", "One Integrated System."],

@@ -21,6 +21,8 @@ export const aboutContent = {
     //   "https://images.unsplash.com/photo-1526506118085-60ce8714f8c5?auto=format&fit=crop&w=2400&q=85",
     video:
       "https://res.cloudinary.com/diuswhkzn/video/upload/f_auto,q_auto:eco,w_1920/v1780315780/about_hero_section_mqeabk.mp4",
+    mobileVideo:
+      "https://res.cloudinary.com/diuswhkzn/video/upload/f_auto,q_auto:eco,w_900/v1780318078/about_portrait_lccjey.mp4",
     alt: "",
     // Each item after the first wraps onto its own line in the heading
     title: ["Built on movement.", "Guided by care."],

@@ -36,6 +36,8 @@ export const homeContent = {
       "https://res.cloudinary.com/diuswhkzn/image/upload/v1780316563/What-is-functional-training.jpg_2_psvrbl.png",
     video:
       "https://res.cloudinary.com/diuswhkzn/video/upload/f_auto,q_auto:eco,w_1920/v1780315829/Landing_page_hero_video_fq9iok.mp4",
+    mobileVideo:
+      "https://res.cloudinary.com/diuswhkzn/video/upload/f_auto,q_auto:eco,w_900/v1780318079/landing_page_hero_portrait_kzl2yg.mp4",
     title: ["Reset.", "Rebuild.", "Rise."],
     text: "Movement-first rehabilitation, performance, and recovery - built for a lifetime, not a season.",
     secondaryAction: {

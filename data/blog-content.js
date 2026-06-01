@@ -15,8 +15,10 @@ export const blogContent = {
     ]
   },
   hero: {
+    // image:
+    //   "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=85",
     image:
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1920&q=85",
+      "https://res.cloudinary.com/diuswhkzn/image/upload/v1780318581/fitness-is-something-you-attain-and-maintain-shot-of-a-fitness-group-working-out-at-the-gym--1536x763_2_1_wps9yq.png",
     alt: "Athlete in training session on the floor",
     title: ["Field notes", "from the floor."],
     text: "Evidence-based writing on rehabilitation, performance, and physical literacy — from the practitioners who live it."

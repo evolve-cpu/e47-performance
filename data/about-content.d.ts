@@ -7,6 +7,7 @@ export const aboutContent: {
   hero: {
     image: string;
     video?: string;
+    mobileVideo?: string;
     alt: string;
     title: string[];
     text: string[];

@@ -15,7 +15,7 @@ export const contactContent = {
   },
   hero: {
     image:
-      "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=1920&q=85",
+      "https://res.cloudinary.com/diuswhkzn/image/upload/v1780318690/fitness-is-something-you-attain-and-maintain-shot-of-a-fitness-group-working-out-at-the-gym--1536x763_1_dsebtq.png",
     alt: "Physiotherapist working with a patient on the floor",
     title: "Begin here.",
     text: "Your first session starts with listening. Book a time or send us a message."
@@ -23,7 +23,8 @@ export const contactContent = {
   details: {
     email: "contact@e47performance.com",
     phone: "+91 34734 73473",
-    address: "E47 Performance, near Sun Villas bungalows, Thaltej, Ahmedabad, Gujarat 380059",
+    address:
+      "E47 Performance, near Sun Villas bungalows, Thaltej, Ahmedabad, Gujarat 380059",
     hours: [
       { days: "Monday – Friday", time: "7:00 am – 8:00 pm" },
       { days: "Saturday", time: "8:00 am – 6:00 pm" },
