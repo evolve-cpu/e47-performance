@@ -59,7 +59,7 @@ export const homeContent = {
         text: "Aquatic therapy, mobility, and restorative protocols that help the body rebuild between training days.",
         tags: "Hydro - Contrast - Regeneration",
         image:
-          "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=900&q=85",
+          "https://res.cloudinary.com/diuswhkzn/image/upload/v1780337102/Hands-on_physiotherapy_b24nbd.png",
         alt: "Aquatic therapy session in pool"
       },
       {
@@ -67,7 +67,7 @@ export const homeContent = {
         text: "Hands-on assessment, progressive loading, and sport-specific return-to-play work for injury and surgery recovery.",
         tags: "ACL - Sports Rehab - Aqua Rehab",
         image:
-          "https://images.unsplash.com/photo-1576091160550-2173dba999ef?auto=format&fit=crop&w=900&q=85",
+          "https://res.cloudinary.com/diuswhkzn/image/upload/v1780337103/Hands-on_physiotherapy_2_hphgv1.png",
         alt: "Physiotherapist working with a patient"
       },
       {
@@ -75,7 +75,7 @@ export const homeContent = {
         text: "Strength, conditioning, and movement skill for athletes who need output that lasts beyond one season.",
         tags: "Conditioning - Sport Specific - Durability",
         image:
-          "https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=900&q=85",
+          "https://res.cloudinary.com/diuswhkzn/image/upload/v1780337102/Hands-on_physiotherapy_1_vhvrrm.png",
         alt: "Athlete training with kettlebells"
       }
     ]

@@ -28,7 +28,7 @@ export default function BlogPage() {
         />
         <div className="absolute inset-0 bg-[rgb(16_39_40/78%)]" />
         <div className="absolute inset-x-0 bottom-0 h-[40%] bg-gradient-to-b from-transparent to-site-black" />
-        <div className="site-container relative z-[2] flex min-h-[100svh] flex-col justify-end pb-[clamp(52px,7vw,96px)] pt-[62px]">
+        <div className="site-container relative z-[2] flex min-h-[100svh] flex-col justify-end pb-[clamp(52px,7vw,96px)] max-md:pb-[120px] pt-[62px]">
           <h1 className="display max-w-[820px] text-[64px] leading-18 max-md:text-[36px] max-md:leading-10">
             {blogContent.hero.title[0]}
             {blogContent.hero.title.slice(1).map((line, i) =>

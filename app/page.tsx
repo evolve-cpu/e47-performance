@@ -28,7 +28,8 @@ export default function HomePage() {
           priority
           sizes="100vw"
         />
-        {homeContent.hero.mediaType === "video" && homeContent.hero.video &&
+        {homeContent.hero.mediaType === "video" &&
+          homeContent.hero.video &&
           <video
             className="absolute inset-0 h-full w-full object-cover [filter:grayscale(25%)_contrast(1.05)]"
             autoPlay
@@ -44,10 +45,7 @@ export default function HomePage() {
                 src={homeContent.hero.mobileVideo}
                 media="(max-width: 819px)"
               />}
-            <source
-              src={homeContent.hero.video}
-              media="(min-width: 820px)"
-            />
+            <source src={homeContent.hero.video} media="(min-width: 820px)" />
           </video>}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(16_39_40/68%)_0%,rgb(16_39_40/58%)_44%,rgb(15_15_15/96%)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-[34%] bg-gradient-to-b from-transparent to-site-black" />
@@ -102,7 +100,7 @@ export default function HomePage() {
         className="bg-teal py-[clamp(78px,9vw,128px)] text-warm"
         id="expertise"
       >
-        <div className="site-container">
+        {/* <div className="site-container">
           <h2 className="display max-w-[820px] text-[3rem] text-warm max-md:text-[2.25rem] reveal">
             <span className="block">
               {homeContent.expertise.eyebrow}.
@@ -111,33 +109,18 @@ export default function HomePage() {
               {homeContent.expertise.title}
             </span>
           </h2>
-        </div>
-
-        {/* Full-width image grid — no site-container so images reach the edges */}
-        {/* <div className="mt-14 grid grid-cols-3 gap-10 max-w-[95%] justify-center items-center max-md:grid-cols-1 max-md:gap-10">
-          {homeContent.expertise.items.map(item =>
-            <article key={item.title} className="reveal">
-              <div className="relative aspect-[0.8/1] w-full overflow-hidden bg-teal-deep">
-                <Image
-                  src={item.image}
-                  alt={item.alt}
-                  fill
-                  sizes="(max-width: 820px) 100vw, 33vw"
-                  className="object-cover [filter:contrast(1.03)]"
-                />
-              </div>
-              <div className="px-5 pt-5">
-                <h3 className="mb-[6px] mt-0 font-display text-[1.05rem] font-black uppercase leading-none">
-                  {item.title}
-                </h3>
-                <span className="block text-[0.58rem] font-black uppercase tracking-[0.12em] text-gold">
-                  {item.tags}
-                </span>
-              </div>
-            </article>
-          )}
         </div> */}
-        {/* <div className="mt-14 mx-auto grid grid-cols-3 justify-items-center gap-1 max-w-[95%] max-md:grid-cols-1 max-md:gap-10 md:max-w-[80%]"> */}
+        <div className="site-container md:flex md:justify-center">
+          <h2 className="display text-[3rem] text-warm max-md:text-[2.05rem] reveal">
+            <span className="block md:inline max-md:mb-2">
+              {homeContent.expertise.eyebrow}.
+            </span>
+
+            <span className="block md:inline md:ml-3">
+              {homeContent.expertise.title}
+            </span>
+          </h2>
+        </div>
         <div className="mt-14 mx-auto grid grid-cols-3 justify-items-center gap-10 max-w-[95%] max-md:max-w-[90%] max-md:grid-cols-1 max-md:gap-10">
           {homeContent.expertise.items.map(item =>
             <article key={item.title} className="reveal w-full max-w-[450px]">
