@@ -30,9 +30,12 @@ export const homeContent = {
     href: "/contact"
   },
   hero: {
-    mediaType: "image",
-    image: "/images/hero-reference.jpg",
-    video: "",
+    mediaType: "video",
+    // image: "/images/hero-reference.jpg",
+    image:
+      "https://res.cloudinary.com/diuswhkzn/image/upload/v1780316563/What-is-functional-training.jpg_2_psvrbl.png",
+    video:
+      "https://res.cloudinary.com/diuswhkzn/video/upload/f_auto,q_auto:eco,w_1920/v1780315829/Landing_page_hero_video_fq9iok.mp4",
     title: ["Reset.", "Rebuild.", "Rise."],
     text: "Movement-first rehabilitation, performance, and recovery - built for a lifetime, not a season.",
     secondaryAction: {
@@ -117,7 +120,8 @@ export const homeContent = {
           "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=600&q=80"
       },
       {
-        quote: "Every session had a reason, and every reason changed how I trained.",
+        quote:
+          "Every session had a reason, and every reason changed how I trained.",
         author: "Mana Patel",
         role: "Indian Olympic Swimmer",
         video:

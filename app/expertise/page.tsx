@@ -43,7 +43,7 @@ function DisciplineVisual({
         <h2 className="display text-[48px] leading-14 max-md:text-[28px] max-md:leading-8">
           {title}
         </h2>
-        <p className="mt-5 max-w-[460px] text-[24px] leading-8 font-light text-warm/82 max-md:text-[14px] max-md:leading-4.5">
+        <p className="mt-5 max-w-[460px] text-[24px] leading-8 font-light text-warm/82 max-md:text-[16px] max-md:leading-6">
           {text}
         </p>
       </div>
@@ -72,7 +72,7 @@ function ServicesList({
           <h3 className="m-0 text-[0.98rem] font-black leading-tight text-teal">
             {service.title}
           </h3>
-          <p className="m-0 mt-1 max-w-[520px] text-[0.92rem] leading-snug text-charcoal">
+          <p className="m-0 mt-1 max-w-[520px] text-[0.92rem] leading-snug text-charcoal max-md:text-[1rem]">
             {service.text}
           </p>
         </article>
@@ -98,11 +98,11 @@ function CtaAndFooter() {
         <h2 className="display text-[96px] leading-26 text-warm max-md:text-[36px] max-md:leading-10 reveal">
           {homeContent.cta.title}
         </h2>
-        <p className="mx-auto mt-6 text-[24px] leading-8 font-light text-[rgb(240_240_229/76%)] max-md:text-[14px] max-md:leading-4.5">
+        <p className="mx-auto mt-6 text-[24px] leading-8 font-light text-[rgb(240_240_229/76%)] max-md:text-[16px] max-md:leading-6">
           {homeContent.cta.text}
         </p>
         <a
-          className="btn mt-8 bg-warm text-teal"
+          className="btn mt-8 bg-warm font-medium text-teal"
           href={homeContent.appointment.href}
         >
           {homeContent.appointment.label}
@@ -148,7 +148,7 @@ export default function ExpertisePage() {
           <h2 className="display max-w-[560px] text-[48px] leading-14 max-md:text-[28px] max-md:leading-8 reveal">
             {expertiseContent.intro.heading}
           </h2>
-          <div className="max-w-[560px] text-[24px] leading-8 font-light text-warm/76 max-md:text-[14px] max-md:leading-4.5 reveal">
+          <div className="max-w-[560px] text-[24px] leading-8 font-light text-warm/76 max-md:text-[16px] max-md:leading-6 reveal">
             {expertiseContent.intro.paragraphs.map((para, i) =>
               <p key={i} className={i === 0 ? "m-0" : "mb-0 mt-7"}>
                 {para}

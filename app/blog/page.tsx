@@ -8,7 +8,7 @@ export const metadata = createMetadata({
   rawTitle: blogContent.seo.rawTitle,
   path: "/blog",
   description: blogContent.seo.description,
-  keywords: blogContent.seo.keywords,
+  keywords: blogContent.seo.keywords
 });
 
 export default function BlogPage() {
@@ -31,9 +31,11 @@ export default function BlogPage() {
         <div className="site-container relative z-[2] flex min-h-[100svh] flex-col justify-end pb-[clamp(52px,7vw,96px)] pt-[62px]">
           <h1 className="display max-w-[820px] text-[64px] leading-18 max-md:text-[36px] max-md:leading-10">
             {blogContent.hero.title[0]}
-            {blogContent.hero.title.slice(1).map((line, i) => (
-              <span key={i} className="block">{line}</span>
-            ))}
+            {blogContent.hero.title.slice(1).map((line, i) =>
+              <span key={i} className="block">
+                {line}
+              </span>
+            )}
           </h1>
         </div>
       </section>
@@ -41,12 +43,14 @@ export default function BlogPage() {
       {/* ── POSTS ── */}
       <section className="bg-warm py-[clamp(88px,11vw,156px)] text-teal max-md:py-[66px]">
         <div className="site-container">
-          <p className="eyebrow text-teal reveal">{blogContent.postsSection.eyebrow}</p>
+          {/* <p className="eyebrow text-teal reveal">
+            {blogContent.postsSection.eyebrow}
+          </p> */}
           <h2 className="display text-teal text-[48px] leading-14 max-md:text-[28px] max-md:leading-8 reveal">
             {blogContent.postsSection.heading}
           </h2>
           <div className="mt-14 grid grid-cols-3 gap-[54px] max-lg:grid-cols-2 max-md:grid-cols-1 max-md:gap-11">
-            {blogContent.posts.map((post) => (
+            {blogContent.posts.map(post =>
               <a className="block reveal" href={post.href} key={post.slug}>
                 <div className="relative aspect-[4/3] w-full overflow-hidden bg-warm max-md:aspect-[1.42/1]">
                   <Image
@@ -58,15 +62,21 @@ export default function BlogPage() {
                   />
                 </div>
                 <div className="mt-6 flex flex-wrap gap-[14px] text-[0.64rem] font-extrabold tracking-[0.2em] uppercase text-teal">
-                  <span>{post.category}</span>
-                  <span className="text-[rgb(45_47_47/58%)]">{post.readTime}</span>
+                  <span>
+                    {post.category}
+                  </span>
+                  <span className="text-[rgb(45_47_47/58%)]">
+                    {post.readTime}
+                  </span>
                 </div>
                 <h2 className="mb-[10px] mt-[22px] font-display text-[1.35rem] font-extrabold leading-[1.12] uppercase text-teal">
                   {post.title}
                 </h2>
-                <p className="m-0 text-charcoal">{post.text}</p>
+                <p className="m-0 text-charcoal">
+                  {post.text}
+                </p>
               </a>
-            ))}
+            )}
           </div>
         </div>
       </section>
@@ -86,10 +96,13 @@ export default function BlogPage() {
           <h2 className="display text-[96px] leading-26 text-warm max-md:text-[36px] max-md:leading-10 reveal">
             {homeContent.cta.title}
           </h2>
-          <p className="mx-auto mt-6 text-[24px] leading-8 font-light text-[rgb(240_240_229/76%)] max-md:text-[14px] max-md:leading-4.5">
+          <p className="mx-auto mt-6 text-[24px] leading-8 font-light text-[rgb(240_240_229/76%)] max-md:text-[16px] max-md:leading-6">
             {homeContent.cta.text}
           </p>
-          <a className="btn mt-8 bg-warm text-teal" href={homeContent.appointment.href}>
+          <a
+            className="btn mt-8 bg-warm font-medium text-teal"
+            href={homeContent.appointment.href}
+          >
             {homeContent.appointment.label}
           </a>
         </div>

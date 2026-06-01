@@ -43,9 +43,9 @@ export default function ContactPage() {
         <div className="site-container grid grid-cols-[1fr_1.1fr] gap-[clamp(48px,8vw,130px)] max-md:grid-cols-1 max-md:gap-14">
           {/* Details column */}
           <div className="reveal">
-            <p className="eyebrow text-[18px] text-teal">
+            {/* <p className="eyebrow text-[18px] text-teal">
               {contactContent.form.eyebrow}
-            </p>
+            </p> */}
             <h2 className="display text-teal text-[76px] leading-[84px] max-md:text-[28px] max-md:leading-8">
               {contactContent.form.heading}
             </h2>

@@ -20,24 +20,30 @@ export default function HomePage() {
         className="relative min-h-[100svh] overflow-hidden bg-teal"
         id="top"
       >
-        {homeContent.hero.mediaType === "video" && homeContent.hero.video
-          ? <video
-              className="absolute inset-0 h-full w-full object-cover [filter:grayscale(25%)_contrast(1.05)]"
+        <Image
+          className="object-cover [filter:grayscale(25%)_contrast(1.05)]"
+          src={homeContent.hero.image}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+        />
+        {homeContent.hero.mediaType === "video" && homeContent.hero.video &&
+          <video
+            className="absolute inset-0 hidden h-full w-full object-cover [filter:grayscale(25%)_contrast(1.05)] md:block"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="metadata"
+            poster={homeContent.hero.image}
+            aria-hidden="true"
+          >
+            <source
               src={homeContent.hero.video}
-              autoPlay
-              muted
-              loop
-              playsInline
-              poster={homeContent.hero.image}
+              media="(min-width: 820px)"
             />
-          : <Image
-              className="object-cover [filter:grayscale(25%)_contrast(1.05)]"
-              src={homeContent.hero.image}
-              alt=""
-              fill
-              priority
-              sizes="100vw"
-            />}
+          </video>}
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgb(16_39_40/68%)_0%,rgb(16_39_40/58%)_44%,rgb(15_15_15/96%)_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-[34%] bg-gradient-to-b from-transparent to-site-black" />
 
@@ -203,10 +209,10 @@ export default function HomePage() {
               {homeContent.blogs.title}
             </h2>
             <a
-              className="btn hidden border-teal text-teal md:inline-flex"
+              className="btn hidden border-teal font-medium text-teal md:inline-flex"
               href={homeContent.blogs.action.href}
             >
-              {homeContent.blogs.action.label} -&gt;
+              {homeContent.blogs.action.label}
             </a>
           </div>
 
@@ -233,7 +239,7 @@ export default function HomePage() {
                 <h3 className="mb-[8px] mt-[14px] font-display text-[1rem] font-black uppercase leading-[1.12] text-teal">
                   {item.title}
                 </h3>
-                <p className="m-0 text-[0.88rem] leading-snug text-charcoal">
+                <p className="m-0 text-[0.88rem] leading-snug text-charcoal max-md:text-[1rem]">
                   {item.text}
                 </p>
               </a>
@@ -241,7 +247,7 @@ export default function HomePage() {
           </div>
 
           <a
-            className="btn mt-9 border-teal text-teal md:hidden"
+            className="btn mt-9 border-teal  text-teal md:hidden"
             href={homeContent.blogs.action.href}
           >
             {homeContent.blogs.action.label} -&gt;

@@ -110,7 +110,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="btn bg-teal text-warm hover:opacity-80 disabled:opacity-50"
+        className="btn bg-teal text-warm font-medium hover:opacity-80 disabled:opacity-50"
       >
         {status === "loading" ? "Sending…" : contactContent.form.submitLabel}
       </button>
