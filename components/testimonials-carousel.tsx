@@ -177,33 +177,37 @@ export function TestimonialsCarousel({
 
                 <div className="absolute inset-0 bg-gradient-to-t from-[#193435]/88 via-[#193435]/16 to-[#f0f0e5]/18" />
 
-                {/* Play button — sits just above the name, disappears once playing */}
-                {!isPlaying &&
-                  <button
-                    type="button"
-                    aria-label="Play"
-                    onClick={e =>
-                      item.video ? handlePlayPause(e, i) : e.stopPropagation()}
-                    // className="absolute bottom-[72px] left-1/2 -translate-x-1/2 grid h-12 w-12 place-items-center rounded-full bg-warm/70 backdrop-blur-[2px]"
-                    className="absolute left-1/2 top-1/2 grid h-14 w-14 -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full bg-warm/70 backdrop-blur-[2px] transition-opacity duration-300"
-                  >
-                    <span className="ml-1 block h-0 w-0 border-y-[8px] border-l-[13px] border-y-transparent border-l-teal" />
-                  </button>}
-
                 {isActive &&
                   <span
                     className="pointer-events-none absolute inset-0"
                     style={{ boxShadow: "inset 0 0 0 1px rgba(25,52,53,0.18)" }}
                   />}
 
-                <span className="absolute bottom-6 left-6 right-6">
-                  <span className="block font-display text-[1rem] font-black uppercase leading-none text-warm">
-                    {item.author}
+                <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between">
+                  <span>
+                    <span className="block font-display text-[1rem] font-black uppercase leading-none text-warm">
+                      {item.author}
+                    </span>
+                    <span className="mt-[7px] block text-[0.58rem] font-black uppercase tracking-[0.08em] text-warm">
+                      {item.role}
+                    </span>
                   </span>
-                  <span className="mt-[7px] block text-[0.58rem] font-black uppercase tracking-[0.08em] text-warm">
-                    {item.role}
-                  </span>
-                </span>
+
+                  {item.video &&
+                    <button
+                      type="button"
+                      aria-label={isPlaying ? "Pause" : "Play"}
+                      onClick={e => handlePlayPause(e, i)}
+                      className="grid h-10 w-10 flex-shrink-0 place-items-center rounded-full bg-warm/70 backdrop-blur-[2px] transition-opacity duration-300"
+                    >
+                      {isPlaying
+                        ? <span className="flex gap-[4px]">
+                            <span className="block h-[13px] w-[3px] rounded-sm bg-teal" />
+                            <span className="block h-[13px] w-[3px] rounded-sm bg-teal" />
+                          </span>
+                        : <span className="ml-[2px] block h-0 w-0 border-y-[7px] border-l-[11px] border-y-transparent border-l-teal" />}
+                    </button>}
+                </div>
               </div>
             );
           })}

@@ -132,6 +132,16 @@ export const homeContent = {
           "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&q=80"
       },
       {
+        quote:
+          "Every session had a reason, and every reason changed how I trained.",
+        author: "Chetan Sakaria",
+        role: "Indian International Cricketer",
+        video:
+          "https://res.cloudinary.com/diuswhkzn/video/upload/v1780319062/testimonial_-_Chetan_Sakariya_indian_cricketer_suonmw.mp4",
+        image:
+          "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&w=600&q=80"
+      },
+      {
         quote: "They treated the person, not just the injury.",
         author: "Himanshu Mittal",
         role: "International Badminton Player",
