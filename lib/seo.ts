@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { siteConfig } from "@/data/site";
+import { allSeoKeywords } from "@/data/seo-keywords";
 
 type SeoInput = {
   title?: string;
@@ -27,16 +28,24 @@ export function createMetadata({
   const pageTitle = rawTitle ?? (title ? `${title} | ${siteConfig.name}` : siteConfig.name);
   const canonical = absoluteUrl(path);
   const ogImage = absoluteUrl(image);
+  const metadataKeywords = keywords
+    ? Array.from(new Set([...keywords, ...allSeoKeywords]))
+    : allSeoKeywords;
 
   return {
     metadataBase: new URL(siteConfig.url),
     title: pageTitle,
     description,
+    applicationName: siteConfig.name,
+    authors: [{ name: siteConfig.name, url: siteConfig.url }],
+    creator: siteConfig.name,
+    publisher: siteConfig.name,
+    category: "Physiotherapy, sports rehabilitation, athletic training",
     icons: {
       icon: "/icon.svg",
       shortcut: "/icon.svg"
     },
-    ...(keywords && { keywords }),
+    keywords: metadataKeywords,
     alternates: {
       canonical
     },

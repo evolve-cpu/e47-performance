@@ -1,15 +1,11 @@
+import { allSeoKeywords } from "./seo-keywords";
+
 export const expertiseContent = {
   seo: {
-    rawTitle: "Expertise - E47 Performance",
+    rawTitle: "Sports Physiotherapy, Rehab & Performance Training | E47",
     description:
-      "Recovery, rehabilitation, and performance services integrated into one continuous movement system.",
-    keywords: [
-      "E47 expertise",
-      "recovery Ahmedabad",
-      "rehabilitation Ahmedabad",
-      "performance training Ahmedabad",
-      "sports physiotherapy Gujarat"
-    ]
+      "Explore E47's sports physiotherapy, MSK rehabilitation, aquatic therapy, recovery, and athletic training services in Ahmedabad, Gujarat.",
+    keywords: allSeoKeywords
   },
 
   hero: {

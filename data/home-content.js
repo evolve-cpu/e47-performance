@@ -1,18 +1,11 @@
+import { allSeoKeywords, primarySearchPhrases } from "./seo-keywords";
+
 export const homeContent = {
   seo: {
-    rawTitle: "E47 - Physiotherapy & Performance | Ahmedabad",
+    rawTitle: "Best Physiotherapy & Athletic Training in Ahmedabad | E47 Performance",
     description:
-      "Movement-first physiotherapy, training, and recovery across Gujarat. One system for athletes, active individuals, and MSK patients.",
-    keywords: [
-      "physiotherapy Ahmedabad",
-      "sports rehab Gujarat",
-      "performance training Ahmedabad",
-      "MSK recovery",
-      "movement rehabilitation",
-      "physical literacy",
-      "injury rehab Gujarat",
-      "aquatic therapy Ahmedabad"
-    ]
+      "E47 Performance provides sports physiotherapy, MSK rehabilitation, athletic training, aquatic therapy, and recovery care in Ahmedabad, Gujarat.",
+    keywords: allSeoKeywords
   },
   brand: {
     name: "E47 Performance",
@@ -107,6 +100,26 @@ export const homeContent = {
         text: "Open to all clients - athletes, kids, patients, with sponsorships available for access."
       }
     ]
+  },
+  searchIntent: {
+    eyebrow: "Search intent",
+    title: "Physiotherapy, rehabilitation, and athletic training in Ahmedabad.",
+    text:
+      "E47 Performance is built for people searching for the best physiotherapy in Ahmedabad, Gujarat, or India, and for athletes who need structured strength and conditioning, sport-specific rehab, recovery, and long-term physical literacy.",
+    regions: ["Ahmedabad", "Thaltej", "Gujarat", "India"],
+    services: [
+      "Sports physiotherapy",
+      "MSK injury rehabilitation",
+      "Athletic training",
+      "Strength and conditioning",
+      "Return-to-sport rehabilitation",
+      "Aquatic therapy and hydrotherapy",
+      "Recovery and wellness",
+      "Youth athletic development",
+      "Para-athlete rehabilitation",
+      "Physical literacy coaching"
+    ],
+    phrases: primarySearchPhrases
   },
   testimonials: {
     title: ["Real People.", "Real Progress."],

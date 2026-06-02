@@ -54,6 +54,14 @@ export const homeContent: {
       text: string;
     }>;
   };
+  searchIntent: {
+    eyebrow: string;
+    title: string;
+    text: string;
+    regions: string[];
+    services: string[];
+    phrases: string[];
+  };
   testimonials: {
     eyebrow?: string;
     title: string[];
