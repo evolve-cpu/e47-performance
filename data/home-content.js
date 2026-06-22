@@ -2,7 +2,8 @@ import { allSeoKeywords, primarySearchPhrases } from "./seo-keywords";
 
 export const homeContent = {
   seo: {
-    rawTitle: "Best Physiotherapy & Athletic Training in Ahmedabad | E47 Performance",
+    rawTitle:
+      "Best Physiotherapy & Athletic Training in Ahmedabad | E47 Performance",
     description:
       "E47 Performance provides sports physiotherapy, MSK rehabilitation, athletic training, aquatic therapy, and recovery care in Ahmedabad, Gujarat.",
     keywords: allSeoKeywords
@@ -20,7 +21,7 @@ export const homeContent = {
   ],
   appointment: {
     label: "Book Your Appointment",
-    href: "/contact"
+    href: "https://calendly.com/contact-e47performance/30min"
   },
   hero: {
     mediaType: "video",
@@ -104,8 +105,7 @@ export const homeContent = {
   searchIntent: {
     eyebrow: "Search intent",
     title: "Physiotherapy, rehabilitation, and athletic training in Ahmedabad.",
-    text:
-      "E47 Performance is built for people searching for the best physiotherapy in Ahmedabad, Gujarat, or India, and for athletes who need structured strength and conditioning, sport-specific rehab, recovery, and long-term physical literacy.",
+    text: "E47 Performance is built for people searching for the best physiotherapy in Ahmedabad, Gujarat, or India, and for athletes who need structured strength and conditioning, sport-specific rehab, recovery, and long-term physical literacy.",
     regions: ["Ahmedabad", "Thaltej", "Gujarat", "India"],
     services: [
       "Sports physiotherapy",
@@ -213,13 +213,14 @@ export const homeContent = {
   },
   contact: {
     email: "contact@e47performance.com",
-    phone: "+91 34734 73473",
+    phone: "+91 7041997347",
     address:
       "E47 Performance, near Sun Villas bungalows, Thaltej, Ahmedabad, Gujarat 380059"
   },
   social: [
     { label: "Instagram", href: "https://www.instagram.com/" },
     { label: "Medium", href: "https://medium.com/" },
-    { label: "YouTube", href: "https://www.youtube.com/" }
+    { label: "YouTube", href: "https://www.youtube.com/" },
+    { label: "Facebook", href: "https://www.youtube.com/" }
   ]
 };

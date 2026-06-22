@@ -52,7 +52,7 @@ export const aboutContent = {
         role: "Co-Founder, MSK & Sports Rehabilitation Specialist",
         bio: "MSK, sports injury, and post-surgical rehabilitation specialist.",
         image:
-          "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85",
+          "https://res.cloudinary.com/diuswhkzn/image/upload/v1782117640/Component_2_pdiy0u.png",
         alt: "Parthav Patel"
       },
       {
@@ -60,15 +60,15 @@ export const aboutContent = {
         role: "Co-Founder, MSK & Sports Rehabilitation Specialist",
         bio: "MSK, sports injury, and post-surgical rehabilitation specialist.",
         image:
-          "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85",
+          "https://res.cloudinary.com/diuswhkzn/image/upload/v1782117640/Component_2_1_klgsym.png",
         alt: "Yashpal Parmar"
       },
       {
-        name: "Coming Soon",
+        name: "PRANAV SAVJANi",
         role: "Performance Coach",
-        bio: "Strength and conditioning specialist with a focus on sport-specific programming.",
+        bio: "Co Founder, Athletic & Human Performance Specialist ",
         image:
-          "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85",
+          "https://res.cloudinary.com/diuswhkzn/image/upload/v1782117639/Component_2_2_u4iuuo.png",
         alt: "E47 Performance Coach"
       },
       {
@@ -100,6 +100,6 @@ export const aboutContent = {
     title: "Your journey starts with one honest session.",
     text: "No diagnosis on a phone call. We listen, assess, then build.",
     buttonLabel: "Book Your Appointment",
-    buttonHref: "/contact"
+    buttonHref: "https://calendly.com/contact-e47performance/30min"
   }
 };
