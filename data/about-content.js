@@ -70,15 +70,15 @@ export const aboutContent = {
         image:
           "https://res.cloudinary.com/diuswhkzn/image/upload/v1782117639/Component_2_2_u4iuuo.png",
         alt: "E47 Performance Coach"
-      },
-      {
-        name: "Coming Soon",
-        role: "Recovery Specialist",
-        bio: "Aquatic therapy and advanced recovery programming across MSK and sports populations.",
-        image:
-          "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85",
-        alt: "E47 Recovery Specialist"
       }
+      // {
+      //   name: "Coming Soon",
+      //   role: "Recovery Specialist",
+      //   bio: "Aquatic therapy and advanced recovery programming across MSK and sports populations.",
+      //   image:
+      //     "https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?auto=format&fit=crop&w=600&q=85",
+      //   alt: "E47 Recovery Specialist"
+      // }
     ]
   },
 
