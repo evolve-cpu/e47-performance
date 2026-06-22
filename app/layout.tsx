@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto, Archivo } from "next/font/google";
+import Script from "next/script";
 import { organizationSchema, websiteSchema, localBusinessSchema, JsonLd } from "@/lib/schema";
 import { createMetadata } from "@/lib/seo";
 import { SiteHeader } from "@/components/site-header";
@@ -28,6 +29,18 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${roboto.variable} ${archivo.variable}`}>
       <body className="bg-warm font-sans text-[17px] leading-[1.55] text-charcoal">
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-T5XQ6M2M1Z"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-T5XQ6M2M1Z');
+          `}
+        </Script>
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
         <JsonLd data={localBusinessSchema()} />
