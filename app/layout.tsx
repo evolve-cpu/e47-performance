@@ -3,6 +3,7 @@ import { Roboto, Archivo } from "next/font/google";
 import Script from "next/script";
 import { organizationSchema, websiteSchema, localBusinessSchema, JsonLd } from "@/lib/schema";
 import { createMetadata } from "@/lib/seo";
+import { getCmsNavigation } from "@/lib/cms";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
@@ -23,9 +24,11 @@ const archivo = Archivo({
 
 export const metadata: Metadata = createMetadata();
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
+  const navigation = await getCmsNavigation();
+
   return (
     <html lang="en" className={`${roboto.variable} ${archivo.variable}`}>
       <body className="bg-warm font-sans text-[17px] leading-[1.55] text-charcoal">
@@ -44,7 +47,7 @@ export default function RootLayout({
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
         <JsonLd data={localBusinessSchema()} />
-        <SiteHeader />
+        <SiteHeader navigation={navigation} />
         <main>{children}</main>
         <SiteFooter />
       </body>

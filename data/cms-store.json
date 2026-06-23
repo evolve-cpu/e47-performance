@@ -1,0 +1,157 @@
+{
+  "pages": [
+    {
+      "id": "home",
+      "type": "fixed",
+      "title": "Home",
+      "slug": "",
+      "path": "/",
+      "navLabel": "Home",
+      "showInNav": false,
+      "enabled": true,
+      "deleted": false,
+      "contentOverride": null,
+      "sections": [],
+      "updatedAt": "2026-06-22T12:32:07.210Z",
+      "action": "update"
+    },
+    {
+      "id": "expertise",
+      "type": "fixed",
+      "title": "Expertise",
+      "slug": "expertise",
+      "path": "/expertise",
+      "navLabel": "Expertise",
+      "showInNav": true,
+      "enabled": true,
+      "deleted": false,
+      "contentOverride": null,
+      "sections": [],
+      "updatedAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "blog",
+      "type": "fixed",
+      "title": "Blog",
+      "slug": "blog",
+      "path": "/blog",
+      "navLabel": "Blogs",
+      "showInNav": false,
+      "enabled": false,
+      "deleted": false,
+      "contentOverride": null,
+      "sections": [],
+      "updatedAt": "2026-06-22T12:36:44.996Z",
+      "action": "update"
+    },
+    {
+      "id": "about",
+      "type": "fixed",
+      "title": "About",
+      "slug": "about",
+      "path": "/about",
+      "navLabel": "About",
+      "showInNav": true,
+      "enabled": true,
+      "deleted": false,
+      "contentOverride": {
+        "seo": {
+          "rawTitle": "About E47 — Movement-First Performance Brand",
+          "description": "Meet the team behind E47. Physiotherapists, performance coaches, and movement specialists united by one philosophy — physical literacy for life.",
+          "keywords": [
+            "about E47",
+            "physiotherapy team Ahmedabad",
+            "movement philosophy",
+            "physical literacy India",
+            "E47 performance brand",
+            "sports rehab team Gujarat",
+            "who is E47"
+          ]
+        },
+        "hero": {
+          "image": "https://res.cloudinary.com/diuswhkzn/image/upload/v1780316563/fitness-is-something-you-attain-and-maintain-shot-of-a-fitness-group-working-out-at-the-gym--1536x763_2_dcyott.png",
+          "video": "https://res.cloudinary.com/diuswhkzn/video/upload/f_auto,q_auto:eco,w_1920/v1780315780/about_hero_section_mqeabk.mp4",
+          "mobileVideo": "https://res.cloudinary.com/diuswhkzn/video/upload/f_auto,q_auto:eco,w_900/v1780318078/about_portrait_lccjey.mp4",
+          "alt": "",
+          "title": [
+            "Built on movement.",
+            "Guided by care."
+          ],
+          "text": [
+            "Between treatment and understanding.",
+            "Between what's possible for a body and what's usually done with it."
+          ]
+        },
+        "story": {
+          "paragraphs": [
+            "E47 was built by people who had seen that cost from the inside. Two decades inside professional cricket taught us that the strongest practitioners aren't the ones with the most modalities. They're the ones who've built one coherent system, applied it without compromise, and trusted it to work.",
+            "So we built ours. Every service at E47, physiotherapy, conditioning, aquatic therapy, recovery, youth development, answers to the same philosophy: physical literacy. We teach you your body. Then we make sure you don't need us forever."
+          ]
+        },
+        "team": {
+          "eyebrow": "The Team",
+          "title": "Practitioners, not personalities.",
+          "subtitle": "Every session is designed and delivered by qualified specialists. Working hands, focused care.",
+          "members": [
+            {
+              "name": "Parthav Patel",
+              "role": "Co-Founder, MSK & Sports Rehabilitation Specialist",
+              "bio": "MSK, sports injury, and post-surgical rehabilitation specialist.",
+              "image": "https://res.cloudinary.com/diuswhkzn/image/upload/v1782117640/Component_2_pdiy0u.png",
+              "alt": "Parthav Patel"
+            },
+            {
+              "name": "Yashpal Parmar",
+              "role": "Co-Founder, MSK & Sports Rehabilitation Specialist",
+              "bio": "MSK, sports injury, and post-surgical rehabilitation specialist.",
+              "image": "https://res.cloudinary.com/diuswhkzn/image/upload/v1782117640/Component_2_1_klgsym.png",
+              "alt": "Yashpal Parmar"
+            },
+            {
+              "name": "PRANAV SAVJANi",
+              "role": "Performance Coach",
+              "bio": "Co Founder, Athletic & Human Performance Specialist ",
+              "image": "https://res.cloudinary.com/diuswhkzn/image/upload/v1782117639/Component_2_2_u4iuuo.png",
+              "alt": "E47 Performance Coach"
+            }
+          ]
+        },
+        "achievements": {
+          "eyebrow": "Achievements & Credentials",
+          "title": "What we stand on.",
+          "items": [
+            "Evidence-based rehabilitation protocols across MSK and sports injuries.",
+            "Integrated performance training for professional, semi-professional, and recreational athletes.",
+            "Aquatic therapy and advanced recovery programming.",
+            "Inclusive para-athlete and youth development programs.",
+            "Accessible programs through sponsorships for low-income individuals.",
+            "Online and home-based care available across Gujarat."
+          ]
+        },
+        "cta": {
+          "title": "Your journey starts with one honest session.",
+          "text": "No diagnosis on a phone call. We listen, assess, then build.",
+          "buttonLabel": "Book Your Appointment",
+          "buttonHref": "https://calendly.com/contact-e47performance/30min"
+        }
+      },
+      "sections": [],
+      "updatedAt": "2026-06-23T08:44:17.840Z",
+      "action": "update"
+    },
+    {
+      "id": "contact",
+      "type": "fixed",
+      "title": "Contact",
+      "slug": "contact",
+      "path": "/contact",
+      "navLabel": "Contact Us",
+      "showInNav": true,
+      "enabled": true,
+      "deleted": false,
+      "contentOverride": null,
+      "sections": [],
+      "updatedAt": "2026-06-22T00:00:00.000Z"
+    }
+  ]
+}

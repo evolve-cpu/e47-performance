@@ -5,7 +5,11 @@ import { E47Logo } from "@/components/e47-logo";
 import { MobileMenu } from "@/components/mobile-menu";
 import { homeContent } from "@/data/home-content";
 
-export function SiteHeader() {
+type SiteHeaderProps = {
+  navigation?: Array<{ label: string; href: string }>;
+};
+
+export function SiteHeader({ navigation = homeContent.navigation }: SiteHeaderProps) {
   const pathname = usePathname();
 
   return (
@@ -20,7 +24,7 @@ export function SiteHeader() {
           className="hidden items-center gap-[34px] text-[0.875rem] font-medium uppercase tracking-[0.18em] md:flex"
           aria-label="Primary navigation"
         >
-          {homeContent.navigation.map(item => (
+          {navigation.map(item => (
             <a
               key={item.href}
               href={item.href}
@@ -44,7 +48,7 @@ export function SiteHeader() {
 
         <MobileMenu
           brandName={homeContent.brand.name}
-          navigation={homeContent.navigation}
+          navigation={navigation}
           appointment={homeContent.appointment}
         />
       </div>

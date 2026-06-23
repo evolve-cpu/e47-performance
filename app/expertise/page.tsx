@@ -1,15 +1,23 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { ScrollReveal } from "@/components/scroll-reveal";
-import { expertiseContent } from "@/data/expertise-content";
-import { homeContent } from "@/data/home-content";
+import { expertiseContent as fallbackExpertiseContent } from "@/data/expertise-content";
+import { homeContent as fallbackHomeContent } from "@/data/home-content";
+import { getCmsContent, isCmsPageVisible } from "@/lib/cms";
 import { createMetadata } from "@/lib/seo";
 
-export const metadata = createMetadata({
-  rawTitle: expertiseContent.seo.rawTitle,
-  path: "/expertise",
-  description: expertiseContent.seo.description,
-  keywords: expertiseContent.seo.keywords
-});
+export const dynamic = "force-dynamic";
+
+export async function generateMetadata() {
+  const expertiseContent = await getCmsContent("expertise", fallbackExpertiseContent);
+
+  return createMetadata({
+    rawTitle: expertiseContent.seo.rawTitle,
+    path: "/expertise",
+    description: expertiseContent.seo.description,
+    keywords: expertiseContent.seo.keywords
+  });
+}
 
 function DisciplineVisual({
   title,
@@ -81,7 +89,9 @@ function ServicesList({
   );
 }
 
-function CtaAndFooter() {
+async function CtaAndFooter() {
+  const homeContent = await getCmsContent("home", fallbackHomeContent);
+
   return (
     <section className="relative -mt-px grid min-h-190 place-items-center overflow-hidden bg-teal text-warm">
       <Image
@@ -112,7 +122,13 @@ function CtaAndFooter() {
   );
 }
 
-export default function ExpertisePage() {
+export default async function ExpertisePage() {
+  if (!(await isCmsPageVisible("expertise"))) {
+    notFound();
+  }
+
+  const expertiseContent = await getCmsContent("expertise", fallbackExpertiseContent);
+
   return (
     <div className="min-h-screen bg-site-black">
       <ScrollReveal />

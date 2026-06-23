@@ -1,17 +1,31 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { ContactForm } from "@/components/contact-form";
-import { contactContent } from "@/data/contact-content";
+import { contactContent as fallbackContactContent } from "@/data/contact-content";
+import { getCmsContent, isCmsPageVisible } from "@/lib/cms";
 import { createMetadata } from "@/lib/seo";
 
-export const metadata = createMetadata({
-  rawTitle: contactContent.seo.rawTitle,
-  path: "/contact",
-  description: contactContent.seo.description,
-  keywords: contactContent.seo.keywords
-});
+export const dynamic = "force-dynamic";
 
-export default function ContactPage() {
+export async function generateMetadata() {
+  const contactContent = await getCmsContent("contact", fallbackContactContent);
+
+  return createMetadata({
+    rawTitle: contactContent.seo.rawTitle,
+    path: "/contact",
+    description: contactContent.seo.description,
+    keywords: contactContent.seo.keywords
+  });
+}
+
+export default async function ContactPage() {
+  if (!(await isCmsPageVisible("contact"))) {
+    notFound();
+  }
+
+  const contactContent = await getCmsContent("contact", fallbackContactContent);
+
   return (
     <div className="min-h-screen bg-site-black">
       <ScrollReveal />

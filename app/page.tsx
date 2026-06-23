@@ -1,17 +1,31 @@
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { ScrollReveal } from "@/components/scroll-reveal";
 import { TestimonialsCarousel } from "@/components/testimonials-carousel";
-import { homeContent } from "@/data/home-content";
+import { homeContent as fallbackHomeContent } from "@/data/home-content";
+import { getCmsContent, isCmsPageVisible } from "@/lib/cms";
 import { createMetadata } from "@/lib/seo";
 
-export const metadata = createMetadata({
-  rawTitle: homeContent.seo.rawTitle,
-  path: "/",
-  description: homeContent.seo.description,
-  keywords: homeContent.seo.keywords
-});
+export const dynamic = "force-dynamic";
 
-export default function HomePage() {
+export async function generateMetadata() {
+  const homeContent = await getCmsContent("home", fallbackHomeContent);
+
+  return createMetadata({
+    rawTitle: homeContent.seo.rawTitle,
+    path: "/",
+    description: homeContent.seo.description,
+    keywords: homeContent.seo.keywords
+  });
+}
+
+export default async function HomePage() {
+  if (!(await isCmsPageVisible("home"))) {
+    notFound();
+  }
+
+  const homeContent = await getCmsContent("home", fallbackHomeContent);
+
   return (
     <div className="min-h-screen bg-site-black">
       <ScrollReveal />
