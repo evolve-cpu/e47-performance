@@ -149,6 +149,30 @@
       "contentOverride": null,
       "sections": [],
       "updatedAt": "2026-06-22T00:00:00.000Z"
+    },
+    {
+      "id": "page-1782208848306",
+      "type": "custom",
+      "title": "New Page",
+      "slug": "new-page-1782208847335",
+      "path": "/new-page-1782208847335",
+      "navLabel": "New Page",
+      "showInNav": true,
+      "enabled": true,
+      "deleted": false,
+      "seo": {},
+      "contentOverride": null,
+      "sections": [
+        {
+          "id": "section-1782208848306",
+          "type": "hero",
+          "title": "New Page",
+          "text": "Add your page intro here.",
+          "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=85",
+          "alt": ""
+        }
+      ],
+      "updatedAt": "2026-06-23T10:00:48.306Z"
     }
   ]
 }
