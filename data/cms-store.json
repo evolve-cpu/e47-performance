@@ -7,12 +7,12 @@
       "slug": "",
       "path": "/",
       "navLabel": "Home",
-      "showInNav": true,
+      "showInNav": false,
       "enabled": true,
       "deleted": false,
       "contentOverride": null,
       "sections": [],
-      "updatedAt": "2026-06-23T13:09:16.910Z"
+      "updatedAt": "2026-06-23T13:09:31.320Z"
     },
     {
       "id": "expertise",
