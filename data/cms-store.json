@@ -232,8 +232,7 @@
         },
         "testimonials": {
           "title": [
-            "Real People. Real Progress.",
-            ""
+            "Real People. Real Progress."
           ],
           "subtitle": "Hear from our clients!",
           "items": [
@@ -334,7 +333,7 @@
         ]
       },
       "sections": [],
-      "updatedAt": "2026-06-23T13:16:59.433Z"
+      "updatedAt": "2026-06-23T13:17:30.085Z"
     },
     {
       "id": "expertise",
