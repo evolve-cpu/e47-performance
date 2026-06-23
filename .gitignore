@@ -8,3 +8,4 @@ dist
 tsconfig.tsbuildinfo
 coverage
 .vercel
+.env*.example

@@ -16,6 +16,11 @@ const fixedFallbacks: Record<string, unknown> = {
   contact: contactContent
 };
 
+type CmsStoreResponse = CmsStore & {
+  storage?: string;
+  error?: string;
+};
+
 function createSection(type: CmsSection["type"]): CmsSection {
   return {
     id: `section-${Date.now()}`,
@@ -40,6 +45,7 @@ export function CmsAdmin({
   const [selectedId, setSelectedId] = useState(initialStore.pages[0]?.id || "");
   const [status, setStatus] = useState("");
   const [password, setPassword] = useState("");
+  const [storage, setStorage] = useState("");
 
   const selectedPage = useMemo(
     () => store.pages.find((page) => page.id === selectedId) || store.pages[0],
@@ -59,56 +65,84 @@ export function CmsAdmin({
     ...(password ? { "x-cms-password": password } : {})
   });
 
-  const refresh = async () => {
-    const response = await fetch("/api/cms/pages", {
-      cache: "no-store",
-      headers: cmsHeaders()
-    });
+  const requestJson = async <T,>(url: string, init?: RequestInit): Promise<T> => {
+    const controller = new AbortController();
+    const timeout = window.setTimeout(() => controller.abort(), 20000);
 
-    if (!response.ok) {
-      setStatus("Wrong password or CMS unavailable.");
-      return;
+    try {
+      const response = await fetch(url, {
+        ...init,
+        signal: controller.signal
+      });
+      const text = await response.text();
+      const data = text ? JSON.parse(text) : {};
+
+      if (!response.ok) {
+        throw new Error(data.error || `Request failed with status ${response.status}.`);
+      }
+
+      return data as T;
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") {
+        throw new Error("CMS request timed out. Please check production storage settings.");
+      }
+
+      throw error;
+    } finally {
+      window.clearTimeout(timeout);
     }
+  };
 
-    setStore(await response.json());
+  const refresh = async () => {
+    try {
+      const data = await requestJson<CmsStoreResponse>("/api/cms/pages", {
+        cache: "no-store",
+        headers: cmsHeaders()
+      });
+
+      setStore({ pages: data.pages });
+      setStorage(data.storage || "");
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Wrong password or CMS unavailable.");
+    }
   };
 
   const savePage = async () => {
     setStatus("Saving...");
-    const response = await fetch("/api/cms/pages", {
-      method: "POST",
-      headers: cmsHeaders(true),
-      body: JSON.stringify({ action: "update", ...selectedPage })
-    });
-    const data = await response.json();
 
-    if (!response.ok) {
-      setStatus(data.error || "Could not save page.");
+    try {
+      await requestJson<{ page: CmsPage }>("/api/cms/pages", {
+        method: "POST",
+        headers: cmsHeaders(true),
+        body: JSON.stringify({ action: "update", ...selectedPage })
+      });
+
+      setStatus("Saved.");
+      await refresh();
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Could not save page.");
       return;
     }
-
-    setStatus("Saved.");
-    await refresh();
   };
 
   const createPage = async () => {
     setStatus("Creating page...");
     const title = "New Page";
-    const response = await fetch("/api/cms/pages", {
-      method: "POST",
-      headers: cmsHeaders(true),
-      body: JSON.stringify({ action: "create", title, slug: `new-page-${Date.now()}` })
-    });
-    const data = await response.json();
 
-    if (!response.ok) {
-      setStatus(data.error || "Could not create page.");
+    try {
+      const data = await requestJson<{ page: CmsPage }>("/api/cms/pages", {
+        method: "POST",
+        headers: cmsHeaders(true),
+        body: JSON.stringify({ action: "create", title, slug: `new-page-${Date.now()}` })
+      });
+
+      await refresh();
+      setSelectedId(data.page.id);
+      setStatus("Page created.");
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Could not create page.");
       return;
     }
-
-    await refresh();
-    setSelectedId(data.page.id);
-    setStatus("Page created.");
   };
 
   const deletePage = async () => {
@@ -117,20 +151,20 @@ export function CmsAdmin({
     }
 
     setStatus("Deleting...");
-    const response = await fetch(`/api/cms/pages/${selectedPage.id}`, {
-      method: "DELETE",
-      headers: cmsHeaders()
-    });
-    const data = await response.json();
 
-    if (!response.ok) {
-      setStatus(data.error || "Could not delete page.");
+    try {
+      await requestJson<{ ok: true }>(`/api/cms/pages/${selectedPage.id}`, {
+        method: "DELETE",
+        headers: cmsHeaders()
+      });
+
+      await refresh();
+      setSelectedId("home");
+      setStatus("Deleted.");
+    } catch (error) {
+      setStatus(error instanceof Error ? error.message : "Could not delete page.");
       return;
     }
-
-    await refresh();
-    setSelectedId("home");
-    setStatus("Deleted.");
   };
 
   return (
@@ -154,6 +188,11 @@ export function CmsAdmin({
               Unlock
             </button>
             {status && <p className="mt-4 text-sm font-bold text-teal">{status}</p>}
+            {storage && (
+              <p className="mt-2 text-xs font-bold uppercase tracking-[0.16em] text-teal/60">
+                Storage: {storage}
+              </p>
+            )}
           </section>
         ) : (
           <>

@@ -12,8 +12,7 @@
       "deleted": false,
       "contentOverride": null,
       "sections": [],
-      "updatedAt": "2026-06-22T12:32:07.210Z",
-      "action": "update"
+      "updatedAt": "2026-06-22T12:32:07.210Z"
     },
     {
       "id": "expertise",
@@ -41,8 +40,7 @@
       "deleted": false,
       "contentOverride": null,
       "sections": [],
-      "updatedAt": "2026-06-22T12:36:44.996Z",
-      "action": "update"
+      "updatedAt": "2026-06-22T12:36:44.996Z"
     },
     {
       "id": "about",
@@ -136,8 +134,7 @@
         }
       },
       "sections": [],
-      "updatedAt": "2026-06-23T08:44:17.840Z",
-      "action": "update"
+      "updatedAt": "2026-06-23T08:44:17.840Z"
     },
     {
       "id": "contact",

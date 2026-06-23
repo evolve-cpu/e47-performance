@@ -57,6 +57,10 @@ export type CmsStore = {
 };
 
 const cmsStorePath = path.join(process.cwd(), "data", "cms-store.json");
+const cmsGitHubPath = process.env.CMS_GITHUB_PATH || "data/cms-store.json";
+const cmsGitHubBranch = process.env.CMS_GITHUB_BRANCH || "main";
+const cmsGitHubRepo = process.env.CMS_GITHUB_REPO;
+const cmsGitHubToken = process.env.CMS_GITHUB_TOKEN;
 const fixedPages: Array<Pick<CmsPage, "id" | "type" | "title" | "slug" | "path" | "navLabel" | "showInNav">> = [
   { id: "home", type: "fixed", title: "Home", slug: "", path: "/", navLabel: "Home", showInNav: false },
   { id: "expertise", type: "fixed", title: "Expertise", slug: "expertise", path: "/expertise", navLabel: "Expertise", showInNav: true },
@@ -102,14 +106,110 @@ function normalizePage(page: CmsPage): CmsPage {
   };
 }
 
+function isGitHubStorageEnabled() {
+  return Boolean(cmsGitHubRepo && cmsGitHubToken);
+}
+
+function githubApiUrl() {
+  return `https://api.github.com/repos/${cmsGitHubRepo}/contents/${cmsGitHubPath}`;
+}
+
+async function getGitHubCmsFile() {
+  if (!isGitHubStorageEnabled()) {
+    return null;
+  }
+
+  const response = await fetch(`${githubApiUrl()}?ref=${cmsGitHubBranch}`, {
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${cmsGitHubToken}`,
+      "X-GitHub-Api-Version": "2022-11-28"
+    },
+    cache: "no-store"
+  });
+
+  if (response.status === 404) {
+    return null;
+  }
+
+  if (!response.ok) {
+    throw new Error(`GitHub CMS read failed: ${response.status} ${response.statusText}`);
+  }
+
+  const data = (await response.json()) as { content: string; sha: string };
+  const raw = Buffer.from(data.content.replace(/\n/g, ""), "base64").toString("utf8");
+
+  return {
+    raw,
+    sha: data.sha
+  };
+}
+
+async function readGitHubCmsStore(): Promise<CmsStore | null> {
+  const file = await getGitHubCmsFile();
+
+  if (!file) {
+    return null;
+  }
+
+  return JSON.parse(file.raw) as CmsStore;
+}
+
+async function writeGitHubCmsStore(store: CmsStore) {
+  const currentFile = await getGitHubCmsFile();
+  const response = await fetch(githubApiUrl(), {
+    method: "PUT",
+    headers: {
+      Accept: "application/vnd.github+json",
+      Authorization: `Bearer ${cmsGitHubToken}`,
+      "Content-Type": "application/json",
+      "X-GitHub-Api-Version": "2022-11-28"
+    },
+    body: JSON.stringify({
+      message: "Update CMS content",
+      content: Buffer.from(`${JSON.stringify(store, null, 2)}\n`, "utf8").toString("base64"),
+      branch: cmsGitHubBranch,
+      sha: currentFile?.sha,
+      committer: {
+        name: process.env.CMS_GITHUB_AUTHOR_NAME || "E47 CMS",
+        email: process.env.CMS_GITHUB_AUTHOR_EMAIL || "cms@e47performance.com"
+      }
+    })
+  });
+
+  if (!response.ok) {
+    const detail = await response.text();
+    throw new Error(`GitHub CMS write failed: ${response.status} ${response.statusText}. ${detail}`);
+  }
+}
+
+async function readLocalCmsStore(): Promise<CmsStore> {
+  const raw = await fs.readFile(cmsStorePath, "utf8");
+  return JSON.parse(raw) as CmsStore;
+}
+
+async function writeLocalCmsStore(store: CmsStore) {
+  await fs.mkdir(path.dirname(cmsStorePath), { recursive: true });
+  await fs.writeFile(cmsStorePath, `${JSON.stringify(store, null, 2)}\n`, "utf8");
+}
+
+export function getCmsStorageLabel() {
+  return isGitHubStorageEnabled() ? "GitHub" : "local file";
+}
+
 export async function readCmsStore(): Promise<CmsStore> {
   let store: CmsStore = { pages: fixedPages.map(createFixedPage) };
 
   try {
-    const raw = await fs.readFile(cmsStorePath, "utf8");
-    store = JSON.parse(raw) as CmsStore;
-  } catch {
-    await writeCmsStore(store);
+    if (isGitHubStorageEnabled()) {
+      store = (await readGitHubCmsStore()) || store;
+    } else {
+      store = await readLocalCmsStore();
+    }
+  } catch (error) {
+    if (isGitHubStorageEnabled()) {
+      throw error;
+    }
   }
 
   const existing = new Map(store.pages.map((page) => [page.id, normalizePage(page)]));
@@ -123,8 +223,12 @@ export async function readCmsStore(): Promise<CmsStore> {
 }
 
 export async function writeCmsStore(store: CmsStore) {
-  await fs.mkdir(path.dirname(cmsStorePath), { recursive: true });
-  await fs.writeFile(cmsStorePath, `${JSON.stringify(store, null, 2)}\n`, "utf8");
+  if (isGitHubStorageEnabled()) {
+    await writeGitHubCmsStore(store);
+    return;
+  }
+
+  await writeLocalCmsStore(store);
 }
 
 export async function getCmsPage(id: string) {
