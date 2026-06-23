@@ -432,6 +432,13 @@
               "bio": "Co Founder, Athletic & Human Performance Specialist ",
               "image": "https://res.cloudinary.com/diuswhkzn/image/upload/v1782117639/Component_2_2_u4iuuo.png",
               "alt": "E47 Performance Coach"
+            },
+            {
+              "name": "ABC",
+              "role": "",
+              "bio": "",
+              "image": "",
+              "alt": ""
             }
           ]
         },
@@ -455,7 +462,7 @@
         }
       },
       "sections": [],
-      "updatedAt": "2026-06-23T08:44:17.840Z"
+      "updatedAt": "2026-06-23T13:25:08.657Z"
     },
     {
       "id": "contact",
