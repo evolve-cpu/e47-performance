@@ -42,7 +42,7 @@ export const aboutContent = {
   },
 
   team: {
-    eyebrow: "The Team",
+    // eyebrow: "The Team",
     title: "Practitioners, not personalities.",
     subtitle:
       "Every session is designed and delivered by qualified specialists. Working hands, focused care.",
@@ -83,7 +83,7 @@ export const aboutContent = {
   },
 
   achievements: {
-    eyebrow: "Achievements & Credentials",
+    // eyebrow: "Achievements & Credentials",
     title: "What we stand on.",
     // Plain text items — rendered as a separated list beside the heading on desktop
     items: [

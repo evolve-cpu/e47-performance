@@ -40,12 +40,12 @@ export const homeContent = {
     }
   },
   philosophy: {
-    eyebrow: "Our Philosophy",
+    // eyebrow: "Our Philosophy",
     title: "One Philosophy. Complete Performance Care.",
     text: "E47 is a complete system for people who want to move freely, heal fully, and perform longer. We bring rehabilitation, performance training, and recovery together under one philosophy - physical literacy. Because strength and healing were never meant to work in isolation."
   },
   expertise: {
-    eyebrow: "Our Expertise",
+    // eyebrow: "Our Expertise",
     title: "Three Disciplines.",
     items: [
       {
@@ -75,7 +75,7 @@ export const homeContent = {
     ]
   },
   difference: {
-    eyebrow: "What Sets Us Apart",
+    // eyebrow: "What Sets Us Apart",
     title: "A complete movement ecosystem.",
     bgImage:
       "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=85",
@@ -102,25 +102,25 @@ export const homeContent = {
       }
     ]
   },
-  searchIntent: {
-    eyebrow: "Search intent",
-    title: "Physiotherapy, rehabilitation, and athletic training in Ahmedabad.",
-    text: "E47 Performance is built for people searching for the best physiotherapy in Ahmedabad, Gujarat, or India, and for athletes who need structured strength and conditioning, sport-specific rehab, recovery, and long-term physical literacy.",
-    regions: ["Ahmedabad", "Thaltej", "Gujarat", "India"],
-    services: [
-      "Sports physiotherapy",
-      "MSK injury rehabilitation",
-      "Athletic training",
-      "Strength and conditioning",
-      "Return-to-sport rehabilitation",
-      "Aquatic therapy and hydrotherapy",
-      "Recovery and wellness",
-      "Youth athletic development",
-      "Para-athlete rehabilitation",
-      "Physical literacy coaching"
-    ],
-    phrases: primarySearchPhrases
-  },
+  // searchIntent: {
+  //   eyebrow: "Search intent",
+  //   title: "Physiotherapy, rehabilitation, and athletic training in Ahmedabad.",
+  //   text: "E47 Performance is built for people searching for the best physiotherapy in Ahmedabad, Gujarat, or India, and for athletes who need structured strength and conditioning, sport-specific rehab, recovery, and long-term physical literacy.",
+  //   regions: ["Ahmedabad", "Thaltej", "Gujarat", "India"],
+  //   services: [
+  //     "Sports physiotherapy",
+  //     "MSK injury rehabilitation",
+  //     "Athletic training",
+  //     "Strength and conditioning",
+  //     "Return-to-sport rehabilitation",
+  //     "Aquatic therapy and hydrotherapy",
+  //     "Recovery and wellness",
+  //     "Youth athletic development",
+  //     "Para-athlete rehabilitation",
+  //     "Physical literacy coaching"
+  //   ],
+  //   phrases: primarySearchPhrases
+  // },
   testimonials: {
     title: ["Real People.", "Real Progress."],
     subtitle: "Hear from our clients!",
@@ -166,7 +166,7 @@ export const homeContent = {
     ]
   },
   blogs: {
-    eyebrow: "Blogs",
+    // eyebrow: "Blogs",
     title: "Notes From the Floor.",
     action: {
       label: "See All",
