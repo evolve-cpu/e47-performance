@@ -127,7 +127,6 @@
           }
         },
         "philosophy": {
-          "eyebrow": "Our Philosophy",
           "title": "One Philosophy. Complete Performance Care.",
           "text": "E47 is a complete system for people who want to move freely, heal fully, and perform longer. We bring rehabilitation, performance training, and recovery together under one philosophy - physical literacy. Because strength and healing were never meant to work in isolation."
         },
@@ -159,7 +158,6 @@
           ]
         },
         "difference": {
-          "eyebrow": "What Sets Us Apart",
           "title": "A complete movement ecosystem.",
           "bgImage": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1920&q=85",
           "items": [
@@ -183,51 +181,6 @@
               "title": "Inclusive by Design",
               "text": "Open to all clients - athletes, kids, patients, with sponsorships available for access."
             }
-          ]
-        },
-        "searchIntent": {
-          "eyebrow": "Search intent",
-          "title": "Physiotherapy, rehabilitation, and athletic training in Ahmedabad.",
-          "text": "E47 Performance is built for people searching for the best physiotherapy in Ahmedabad, Gujarat, or India, and for athletes who need structured strength and conditioning, sport-specific rehab, recovery, and long-term physical literacy.",
-          "regions": [
-            "Ahmedabad",
-            "Thaltej",
-            "Gujarat",
-            "India"
-          ],
-          "services": [
-            "Sports physiotherapy",
-            "MSK injury rehabilitation",
-            "Athletic training",
-            "Strength and conditioning",
-            "Return-to-sport rehabilitation",
-            "Aquatic therapy and hydrotherapy",
-            "Recovery and wellness",
-            "Youth athletic development",
-            "Para-athlete rehabilitation",
-            "Physical literacy coaching"
-          ],
-          "phrases": [
-            "best physiotherapy in Ahmedabad",
-            "best physiotherapy in Gujarat",
-            "best physiotherapy in India",
-            "sports physiotherapy Ahmedabad",
-            "sports physiotherapy Gujarat",
-            "physiotherapy in Thaltej",
-            "musculoskeletal physiotherapy",
-            "MSK injury rehabilitation",
-            "sports injury rehabilitation",
-            "athletic training Ahmedabad",
-            "athlete training Gujarat",
-            "performance training Ahmedabad",
-            "strength and conditioning Ahmedabad",
-            "return to sport rehabilitation",
-            "aquatic therapy Ahmedabad",
-            "hydrotherapy Ahmedabad",
-            "youth athletic development",
-            "physical literacy India",
-            "recovery and wellness Ahmedabad",
-            "para-athlete rehabilitation"
           ]
         },
         "testimonials": {
