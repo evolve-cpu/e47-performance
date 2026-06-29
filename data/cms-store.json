@@ -543,30 +543,6 @@
       },
       "sections": [],
       "updatedAt": "2026-06-29T11:49:43.360Z"
-    },
-    {
-      "id": "page-1782734114735",
-      "type": "custom",
-      "title": "New Page for e47",
-      "slug": "new-page-47",
-      "path": "/new-page-47",
-      "navLabel": "New Pagee47",
-      "showInNav": true,
-      "enabled": true,
-      "deleted": false,
-      "seo": {},
-      "contentOverride": null,
-      "sections": [
-        {
-          "id": "section-1782734114735",
-          "type": "hero",
-          "title": "New Page",
-          "text": "Add your page intro here.",
-          "image": "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1800&q=85",
-          "alt": ""
-        }
-      ],
-      "updatedAt": "2026-06-29T11:56:13.531Z"
     }
   ]
 }
