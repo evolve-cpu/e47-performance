@@ -356,12 +356,12 @@
       "slug": "blog",
       "path": "/blog",
       "navLabel": "Blogs",
-      "showInNav": true,
-      "enabled": true,
+      "showInNav": false,
+      "enabled": false,
       "deleted": false,
       "contentOverride": null,
       "sections": [],
-      "updatedAt": "2026-06-29T10:44:35.390Z"
+      "updatedAt": "2026-06-29T10:44:49.867Z"
     },
     {
       "id": "about",
