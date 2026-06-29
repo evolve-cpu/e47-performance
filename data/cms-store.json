@@ -370,8 +370,8 @@
       "slug": "about",
       "path": "/about",
       "navLabel": "About",
-      "showInNav": true,
-      "enabled": true,
+      "showInNav": false,
+      "enabled": false,
       "deleted": false,
       "contentOverride": {
         "seo": {
@@ -455,7 +455,7 @@
         }
       },
       "sections": [],
-      "updatedAt": "2026-06-23T13:26:09.515Z"
+      "updatedAt": "2026-06-29T11:58:22.541Z"
     },
     {
       "id": "contact",
