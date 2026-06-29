@@ -547,10 +547,10 @@
     {
       "id": "page-1782734114735",
       "type": "custom",
-      "title": "New Page",
-      "slug": "new-page-e47",
-      "path": "/new-page-e47",
-      "navLabel": "New Page",
+      "title": "New Page for e47",
+      "slug": "new-page-1782734114305",
+      "path": "/new-page-1782734114305",
+      "navLabel": "New Pagee47",
       "showInNav": true,
       "enabled": true,
       "deleted": false,
@@ -566,7 +566,7 @@
           "alt": ""
         }
       ],
-      "updatedAt": "2026-06-29T11:55:53.390Z"
+      "updatedAt": "2026-06-29T11:55:57.496Z"
     }
   ]
 }
