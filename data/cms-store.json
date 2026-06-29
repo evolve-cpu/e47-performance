@@ -257,7 +257,7 @@
           ]
         },
         "cta": {
-          "image": "https://images.unsplash.com/photo-1574680096145-d05b474e2155?auto=format&fit=crop&w=2400&q=85",
+          "image": "https://res.cloudinary.com/diuswhkzn/image/upload/v1782736193/iStock-1486146700-1-1024x471_2_qetj7c.png",
           "title": "Your journey starts with one honest session.",
           "text": "No diagnosis on a phone call. We listen, assess, then build."
         },
@@ -286,7 +286,7 @@
         ]
       },
       "sections": [],
-      "updatedAt": "2026-06-29T11:47:28.102Z"
+      "updatedAt": "2026-06-29T12:30:45.077Z"
     },
     {
       "id": "expertise",
