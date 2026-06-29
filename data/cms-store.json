@@ -90,7 +90,7 @@
         },
         "navigation": [
           {
-            "label": "Expertise",
+            "label": "Expertisee",
             "href": "/expertise"
           },
           {
@@ -333,7 +333,7 @@
         ]
       },
       "sections": [],
-      "updatedAt": "2026-06-23T13:18:57.112Z"
+      "updatedAt": "2026-06-29T10:43:11.340Z"
     },
     {
       "id": "expertise",
