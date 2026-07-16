@@ -7,7 +7,7 @@
       "slug": "",
       "path": "/",
       "navLabel": "Home",
-      "showInNav": false,
+      "showInNav": true,
       "enabled": true,
       "deleted": false,
       "contentOverride": {
@@ -286,7 +286,7 @@
         ]
       },
       "sections": [],
-      "updatedAt": "2026-06-29T12:30:45.077Z"
+      "updatedAt": "2026-07-16T10:57:55.885Z"
     },
     {
       "id": "expertise",
